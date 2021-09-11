@@ -8,3 +8,6 @@
 user = User.create!(username: 'user', password_digest: 'password')
 
 HighScore.create!(user: user , score: 0)
+
+klass = Klass.create!(klass_name: 'Hero', attack_bonus: 10, defense_bonus: 10)
+
