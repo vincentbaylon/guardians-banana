@@ -1,3 +1,3 @@
 class Character < ApplicationRecord
-  has_one :klass
+belongs_to :klass 
 end

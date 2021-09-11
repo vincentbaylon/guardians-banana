@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 2021_09_11_213527) do
 
   create_table "characters", force: :cascade do |t|
     t.string "character_name"
-    t.integer "klass", null: false
+    t.bigint "klass_id", null: false
     t.boolean "is_hero"
     t.integer "max_hp"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["klass_id"], name: "index_characters_on_klass_id"
   end
 
   create_table "high_scores", force: :cascade do |t|
