@@ -4,6 +4,6 @@
 
 Turn based fighting game.
 
-##
+## Developers
 
-Developers: Tate, Aaron, Vince
+Tate, Aaron, Vince
