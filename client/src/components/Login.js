@@ -10,6 +10,10 @@ const imgStyle = {
     maxWidth: '750px'
 }
 
+const gridStyle = {
+    minHeight: '100vh'
+}
+
 function Login() {
     const [login, setLogin] = useState(false)
 
@@ -20,7 +24,7 @@ function Login() {
     return (
         <>
             <form>
-                <Grid container spacing={4} justifyContent="center" alignItems="center" direction="column" style={{ minHeight: '100vh' }}>
+                <Grid container spacing={4} justifyContent="center" alignItems="center" direction="column" style={gridStyle}>
                     <Grid item>
                         <img src={Logo} style={imgStyle} />
                     </Grid>
@@ -37,13 +41,13 @@ function Login() {
                         <TextField id="password" label="Password" defaultValue="" />
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color="secondary">
+                        <Button variant="contained" color={login ? "primary" : "secondary"}>
                             {login ? "Log In" : "Sign Up"}
                         </Button>
                     </Grid>
                     <Grid item direction="row">
                         {login ? "No account?" : "Already have an account?"}
-                        <Button variant="text" color="primary" size="small" onClick={handleClick}>
+                        <Button variant="text" color={login ? "secondary" : "primary"} size="small" onClick={handleClick}>
                             {login ? "Sign Up" : "Log In"}
                         </Button>
                     </Grid>
