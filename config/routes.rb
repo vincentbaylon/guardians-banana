@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  
-  resources :user, only: [ :create, :show, :update, :delete ]
-  resources :character, only: [ :index, :show, :create, :update, :delete]
-  resources :battle, only: [ :create, :update ]
+
+  resources :users, only: [ :create, :show, :update, :destroy ]
+  resources :characters, only: [ :index, :show, :create, :update, :destroy]
+  resources :battles, only: [ :create, :update ]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
