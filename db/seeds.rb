@@ -9,4 +9,5 @@ user = User.create!(username: 'user', password_digest: 'password')
 HighScore.create!(user: user , score: 0)
 klass = Klass.create!(klass_name: 'Hero', attack_bonus: 1, defense_bonus: 2)
 character = Character.create!(character_name: 'Person', klass: klass, max_hp: 100)
-
+skill = Skill.create!(skill_name: 'Attack', flavor_text: 'This is an attack skill', skill_effect: 1)
+KlassSkill.create!(klass: klass, skill: skill)
