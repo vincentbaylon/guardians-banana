@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user, status: :ok
+    render json: @user, include: :high_scores, status: :ok
   end
 
   def update
