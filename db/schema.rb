@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_12_002949) do
+ActiveRecord::Schema.define(version: 2021_09_12_004523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "battles", force: :cascade do |t|
+    t.integer "player_character_id", null: false
+    t.integer "non_player_character_id", null: false
+    t.integer "hero_hp"
+    t.integer "enemy_hp"
+    t.integer "turn", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "character_name"
     t.bigint "klass_id", null: false
-    t.boolean "is_hero"
-    t.integer "max_hp"
+    t.boolean "is_hero", default: false
+    t.integer "max_hp", default: 100
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["klass_id"], name: "index_characters_on_klass_id"
@@ -44,8 +54,8 @@ ActiveRecord::Schema.define(version: 2021_09_12_002949) do
 
   create_table "klasses", force: :cascade do |t|
     t.string "klass_name"
-    t.integer "attack_bonus"
-    t.integer "defense_bonus"
+    t.integer "attack_bonus", default: 1
+    t.integer "defense_bonus", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

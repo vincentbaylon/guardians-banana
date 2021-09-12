@@ -4,4 +4,6 @@ class User < ApplicationRecord
   has_many :high_scores
 
   validates :username, :password_digest, presence: true
+  validates :username, uniqueness: true
+  validates :username, length: { in: 5..15 }
 end

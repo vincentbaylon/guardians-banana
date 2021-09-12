@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create!(username: 'user', password_digest: 'password')
-HighScore.create!(user: user , score: 0)
-klass = Klass.create!(klass_name: 'Hero', attack_bonus: 1, defense_bonus: 2)
-character = Character.create!(character_name: 'Person', klass: klass, max_hp: 100)
-skill = Skill.create!(skill_name: 'Attack', flavor_text: 'This is an attack skill', skill_effect: 1)
-KlassSkill.create!(klass: klass, skill: skill)
+User.create!(username: 'User', password_digest: 'password_digest')
+
+klass = Klass.create!(klass_name: "Fighter", attack_bonus: 1, defense_bonus: 1)
+
+chacter = Character.create!(character_name: "Crash Test Hero", klass_id: 1, is_hero: true, max_hp: 10)
+
+Battle.create!(player_character_id: 1, non_player_character_id: 1)
