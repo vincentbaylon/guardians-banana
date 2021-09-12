@@ -14,4 +14,10 @@ class CharactersController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def find_characters
+    @character = Character.find(params[:id])
+  end
 end

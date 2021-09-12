@@ -1,18 +1,33 @@
 class UsersController < ApplicationController
 
+  before_action :find_user, except: :create
+
   def create
-    render json: { message: "This is a create action" }, status: :created
+    user = User.create!(user_params)
+    render json: user, status: :created if user.valid?
   end
 
   def show
-    render json: { message: "This is a show action" }, status: :ok
+    render json: @user, status: :ok
   end
 
   def update
-    render json: { message: "This is an update action" }, status: :accepted
+    @user.update(user_params)
+    render json: @user, status: :accepted
   end
 
   def destroy
-    render json: { message: "This is a destroy action" }, status: :accepted
+    @user.destroy
+    head :no_content
+  end
+
+  private
+
+  def find_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.permit(:username, :password, :password_confirmation)
   end
 end
