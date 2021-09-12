@@ -3,18 +3,11 @@ import { Grid } from '@material-ui/core'
 import { TextField } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Button } from '@material-ui/core'
-import Logo from './assets/guardians-logo.png'
-
-const imgStyle = {
-    width: '100%',
-    maxWidth: '750px'
-}
-
-const gridStyle = {
-    minHeight: '100vh'
-}
+import Logo from '../assets/guardians-logo.png'
+import useStyles from './Styles'
 
 function Login() {
+    const classes = useStyles()
     const [login, setLogin] = useState(false)
 
     const handleClick = () => {
@@ -24,9 +17,9 @@ function Login() {
     return (
         <>
             <form>
-                <Grid container spacing={4} justifyContent="center" alignItems="center" direction="column" style={gridStyle}>
+                <Grid container spacing={4} justifyContent="center" alignItems="center" direction="column" className={classes.height}>
                     <Grid item>
-                        <img src={Logo} style={imgStyle} />
+                        <img src={Logo} className={classes.image} />
                     </Grid>
 
                     <Grid item>
