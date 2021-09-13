@@ -19,25 +19,26 @@ wizard = Klass.create!(klass_name: "Wizard", attack_bonus: 1, defense_bonus: 1)
 assassin = Klass.create!(klass_name: "Assassin", attack_bonus: 1, defense_bonus: 1)
 cleric = Klass.create!(klass_name: "Cleric", attack_bonus: 1, defense_bonus: 1)
 
+vince_user = User.create!(username: "Vince", password_digest: "password")
+
 # chacter = Character.create!(character_name: "Crash Test Hero", klass_id: lass.id.first, is_hero: true, max_hp: 10)
-lantz = Character.create!(character_name: "Lantz", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/kqVFqBp/lantz-idle.png")
-obi = Character.create!(character_name: "Obi", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/b2SPymF/obi-idle.png")
-trevor = Character.create!(character_name: "Trevor", klass_id: fighter.id, is_hero: true, image_url: "https://i.ibb.co/2N1Nw8Z/trevor-idle.png")
-isaac = Character.create!(character_name: "Isaac", klass_id: fighter.id, is_hero: true, image_url: "https://i.ibb.co/tmXvS99/isaac-idle.png")
-claire = Character.create!(character_name: "Claire", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/F5GBbhn/claire-idle.png")
-josh = Character.create!(character_name: "Josh", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/q0CQtJz/josh-idle.png")
-abraham = Character.create!(character_name: "Abraham", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/mXB7sX5/abraham-idle.png")
-joe = Character.create!(character_name: "Joe", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/1Kh3S5X/joe-idle.png")
-whiting = Character.create!(character_name: "Whiting", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/mSqk8wH/whiting-idle.png")
-ben = Character.create!(character_name: "Ben", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/5vL4wFz/ben-idle.png")
-sam = Character.create!(character_name: "Sam", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/vYnMCqq/sam-idle.png")
-john = Character.create!(character_name: "John", klass_id: fighter.id, is_hero: true, image_url: "https://i.ibb.co/fqCrsVR/john-idle.png")
-aaron = Character.create!(character_name: "Aaron", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/s9zHK8Y/aaron-idle.png")
-tate = Character.create!(character_name: "Tate", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/7gjJdvW/tate-idle.png")
-vince = Character.create!(character_name: "Vince", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/ky99V9y/vince-idle.png")
+lantz = Character.create!(character_name: "Lantz", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/kqVFqBp/lantz-idle.png", user_id: vince_user.id)
+obi = Character.create!(character_name: "Obi", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/b2SPymF/obi-idle.png", user_id: vince_user.id)
+trevor = Character.create!(character_name: "Trevor", klass_id: fighter.id, is_hero: true, image_url: "https://i.ibb.co/2N1Nw8Z/trevor-idle.png", user_id: vince_user.id)
+isaac = Character.create!(character_name: "Isaac", klass_id: fighter.id, is_hero: true, image_url: "https://i.ibb.co/tmXvS99/isaac-idle.png", user_id: vince_user.id)
+claire = Character.create!(character_name: "Claire", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/F5GBbhn/claire-idle.png", user_id: vince_user.id)
+josh = Character.create!(character_name: "Josh", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/q0CQtJz/josh-idle.png", user_id: vince_user.id)
+abraham = Character.create!(character_name: "Abraham", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/mXB7sX5/abraham-idle.png", user_id: vince_user.id)
+joe = Character.create!(character_name: "Joe", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/1Kh3S5X/joe-idle.png", user_id: vince_user.id)
+whiting = Character.create!(character_name: "Whiting", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/mSqk8wH/whiting-idle.png", user_id: vince_user.id)
+ben = Character.create!(character_name: "Ben", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/5vL4wFz/ben-idle.png", user_id: vince_user.id)
+sam = Character.create!(character_name: "Sam", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/vYnMCqq/sam-idle.png", user_id: vince_user.id)
+john = Character.create!(character_name: "John", klass_id: fighter.id, is_hero: true, image_url: "https://i.ibb.co/fqCrsVR/john-idle.png", user_id: vince_user.id)
+aaron = Character.create!(character_name: "Aaron", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/s9zHK8Y/aaron-idle.png", user_id: vince_user.id)
+tate = Character.create!(character_name: "Tate", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/7gjJdvW/tate-idle.png", user_id: vince_user.id)
+vince = Character.create!(character_name: "Vince", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/ky99V9y/vince-idle.png", user_id: vince_user.id)
 
 Battle.create!(player_character_id: lantz.id, non_player_character_id: obi.id)
-vince_user = User.create!(username: "Vince", password_digest: "password")
 
 high_score = HighScore.create!(user_id: vince_user.id, score: 100)
 
@@ -48,19 +49,3 @@ klass_skill = KlassSkill.create!(klass_id: Klass.ids.first, skill_id: Skill.ids.
 
 
 puts 'Done seeding'
-
-# https://i.ibb.co/s9zHK8Y/aaron-idle.png
-# https://i.ibb.co/mXB7sX5/abraham-idle.png
-# https://i.ibb.co/5vL4wFz/ben-idle.png
-# https://i.ibb.co/F5GBbhn/claire-idle.png
-# https://i.ibb.co/tmXvS99/isaac-idle.png
-# https://i.ibb.co/1Kh3S5X/joe-idle.png
-# https://i.ibb.co/fqCrsVR/john-idle.png
-# https://i.ibb.co/q0CQtJz/josh-idle.png
-# https://i.ibb.co/kqVFqBp/lantz-idle.png
-# https://i.ibb.co/b2SPymF/obi-idle.png
-# https://i.ibb.co/vYnMCqq/sam-idle.png
-# https://i.ibb.co/7gjJdvW/tate-idle.png
-# https://i.ibb.co/2N1Nw8Z/trevor-idle.png
-# https://i.ibb.co/ky99V9y/vince-idle.png
-# https://i.ibb.co/mSqk8wH/whiting-idle.png

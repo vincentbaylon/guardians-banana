@@ -27,12 +27,16 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
 
   create_table "characters", force: :cascade do |t|
     t.string "character_name"
+    t.string "image_url"
     t.bigint "klass_id", null: false
     t.boolean "is_hero", default: false
     t.integer "max_hp", default: 100
+    t.integer "current_hp"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["klass_id"], name: "index_characters_on_klass_id"
+    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
   create_table "high_scores", force: :cascade do |t|
