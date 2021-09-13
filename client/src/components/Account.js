@@ -9,9 +9,9 @@ function Account() {
 
     return (
         <>
-            <Grid container justifyContent="center" alignContent="center" direction="column" alignItems="center" >
+            <Grid container justifyContent="center" alignContent="center" direction="column" alignItems="center" spacing={0} >
                 <Grid item className={classes.background} xs>
-                    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column">
+                    <Grid container spacing={0} justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.height}>
                         <Grid item xs={12}>
 
                         </Grid>
@@ -24,20 +24,17 @@ function Account() {
                         <Grid item xs={12}>
                             <Button variant="contained" color="secondary" size="large">Start Battle!</Button>
                         </Grid>
-                        <Grid container spacing={0} alignItems="center" alignContent="center" justifyContent="center">
+                        <Grid container spacing={0} alignItems="center" alignContent="center" justifyContent="center" className={classes.height}>
                             <Grid item xs>
 
                             </Grid>
-                            <Grid item xs>
+                            <Grid item xs={3} style={{textAlign: "center"}}>
                                 <Button variant="contained" color="primary" size="large">Create A Character</Button>
                             </Grid>
                             <Grid item xs>
                                 
                             </Grid>
-                            <Grid item xs>
-
-                            </Grid>
-                            <Grid item xs>
+                            <Grid item xs={3} style={{textAlign: "center"}}>
                                 <Button variant="contained" color="primary" size="large">Select A Character</Button>
                             </Grid>
                             <Grid item xs>
