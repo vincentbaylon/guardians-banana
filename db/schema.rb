@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
 
   create_table "klasses", force: :cascade do |t|
     t.string "klass_name"
-    t.integer "attack_bonus", default: 1
-    t.integer "defense_bonus", default: 1
+    t.integer "attack_bonus"
+    t.integer "defense_bonus"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

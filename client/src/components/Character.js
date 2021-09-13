@@ -8,14 +8,14 @@ import CharacterCard from './CharacterCard'
 
 function Character() {
     const classes = useStyles()
-    const [characters, setCharacters] = ([])
+    const [characters, setCharacters] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3000/characters')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                setCharacters(data)
+            })
     }, [])
 
     const characterData = characters.map((eachChar) => {
@@ -24,9 +24,11 @@ function Character() {
 
     return (
         <>
-            <Grid container justifyContent="center" alignContent="center" direction="column" alignItems="center" spacing={0} >
+            <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" >
                 <Grid item className={classes.backgroundTwo} xs>
-                    {characterData}
+                    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={3} className={classes.characterContainer}>
+                        {characterData}
+                    </Grid>
                 </Grid>
             </Grid>
         </>

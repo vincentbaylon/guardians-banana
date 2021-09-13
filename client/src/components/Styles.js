@@ -28,7 +28,15 @@ const useStyles = makeStyles((theme) => ({
     },
     imageCard: {
         width: '100%',
-        maxWidth: '250px'
+        maxWidth: '150px'
+    },
+    paper: {
+        background: 'black',
+        display: 'inline-block',
+        width: '200px'
+    },
+    characterContainer: {
+        
     }
 }))
 
