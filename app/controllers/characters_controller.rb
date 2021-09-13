@@ -1,4 +1,6 @@
 class CharactersController < ApplicationController
+  before_action :authorize, except: :index
+  before_action :find_character, except: :index
   
   def index
   end
@@ -17,7 +19,7 @@ class CharactersController < ApplicationController
 
   private
 
-  def find_characters
+  def find_character
     @character = Character.find(params[:id])
   end
 end

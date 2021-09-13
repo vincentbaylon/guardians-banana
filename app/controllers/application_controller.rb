@@ -12,4 +12,8 @@ class ApplicationController < ActionController::API
   def render_unprocessable(exception)
     render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
   end
+  
+  def authorize
+    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+  end
 end

@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, except: :create
+  before_action :authorize, :find_user, except: :create
 
   def create
-    user = User.create!(user_params)
-    render json: user, status: :created if user.valid?
+    render json: User.create!(user_params), status: :created if user.valid?
   end
 
   def show
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    @user.destroy if @user.id == session[:user_id]
     head :no_content
   end
 
