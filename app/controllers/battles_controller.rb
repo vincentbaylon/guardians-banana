@@ -1,12 +1,13 @@
 class BattlesController < ApplicationController
 
+  before_action :find_battle, except: :create
+
   def create
     render json: Battle.create!(battle_params), status: :created
   end
 
   def update
-    #Will call an instance method on the battle model
-    #Will have 'logic' for what to call
+    @battle.combat
     render json: @battle, status: :accepted
   end
 
