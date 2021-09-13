@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
   create_table "characters", force: :cascade do |t|
     t.string "character_name"
     t.bigint "klass_id", null: false
-    t.boolean "is_hero", default: false
+    t.boolean "is_hero", default: true
     t.integer "max_hp", default: 100
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
 
   create_table "klasses", force: :cascade do |t|
     t.string "klass_name"
-    t.integer "attack_bonus", default: 1
-    t.integer "defense_bonus", default: 1
+    t.integer "attack_bonus"
+    t.integer "defense_bonus"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

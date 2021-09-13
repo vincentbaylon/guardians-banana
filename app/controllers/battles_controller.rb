@@ -7,7 +7,10 @@ class BattlesController < ApplicationController
   end
 
   def update
-    @battle.combat
+    @battle.turn.even? ? 
+      @battle.attack(@battle.player_character, @battle.non_player_character) 
+    : 
+      @battle.attack(@battle.non_player_character, @battle.player_character)
     render json: @battle, status: :accepted
   end
 
