@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import Login from './Login'
 import Account from './Account'
 import Character from './Character'
+import Fetch from './Fetch'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           </Route>
         </Switch>
       </Container>
+      <Fetch />
     </div>
   );
 }

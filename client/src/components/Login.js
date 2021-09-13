@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Grid } from '@material-ui/core'
 import { TextField } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
@@ -8,10 +9,38 @@ import useStyles from './Styles'
 
 function Login() {
     const classes = useStyles()
-    const [login, setLogin] = useState(false)
+    const history = useHistory()
+    const [login, setLogin] = useState(true)
+    const [userName, setUserName] = useState("")
+    const [password, setPassword] = useState("")
+    const [user, setUser] = useState()
+    
 
     const handleClick = () => {
         setLogin(login => !login)
+    }
+
+    const handleLogin = () => {
+        const userCred = {
+            username: userName,
+            password: password
+        }
+        let url = ''
+        login ? url = "login" : url = "users"
+        fetch(`http://localhost:3000/${url}`, {
+          method: 'POST',
+          headers: {
+              'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify(userCred)
+        }).then(r => r.json()).then(data => {
+            if (data.error === undefined){
+                setUser(data)
+                history.push('/account')
+            }else{
+                alert(data.error)
+            }
+        })
     }
 
     return (
@@ -28,13 +57,13 @@ function Login() {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <TextField id="username" label="Username" defaultValue="" />
+                        <TextField onChange={(e) => setUserName(e.target.value)} id="username" label="Username" defaultValue="" />
                     </Grid>
                     <Grid item>
-                        <TextField id="password" label="Password" defaultValue="" />
+                        <TextField onChange={(e) => setPassword(e.target.value)} id="password" label="Password" defaultValue="" />
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color={login ? "primary" : "secondary"}>
+                        <Button variant="contained" color={login ? "primary" : "secondary"} onClick={handleLogin}>
                             {login ? "Log In" : "Sign Up"}
                         </Button>
                     </Grid>
