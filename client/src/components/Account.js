@@ -13,12 +13,6 @@ function Account() {
                 <Grid item className={classes.background} xs>
                     <Grid container spacing={0} justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.height}>
                         <Grid item xs={12}>
-
-                        </Grid>
-                        <Grid item xs={12}>
-
-                        </Grid>
-                        <Grid item xs={12}>
                             <img src={Knight} className={classes.image} />
                         </Grid>
                         <Grid item xs={12}>
