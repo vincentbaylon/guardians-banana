@@ -10,7 +10,7 @@ function Account() {
     return (
         <>
             <Grid container justifyContent="center" alignContent="center" direction="column" alignItems="center" spacing={0} >
-                <Grid item className={classes.background} xs>
+                <Grid item xs className={classes.background}>
                     <Grid container spacing={0} justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.height}>
                         <Grid item xs={12}>
                             <img src={Knight} className={classes.image} />

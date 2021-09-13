@@ -7,6 +7,10 @@ import HighScore from './HighScore';
 import Login from './Login';
 import Account from './Account';
 import Character from './Character';
+import Login from './Login'
+import Account from './Account'
+import Character from './Character'
+import Fetch from './Fetch'
 
 function App() {
   return (
@@ -28,6 +32,7 @@ function App() {
           </Route>
         </Switch>
       </Container>
+      <Fetch />
     </div>
   );
 }

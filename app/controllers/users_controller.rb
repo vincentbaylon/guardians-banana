@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize, :find_user, except: :create
 
   def create
-    render json: User.create!(user_params), status: :created if user.valid?
+    render json: User.create!(user_params), status: :created
   end
 
   def show
