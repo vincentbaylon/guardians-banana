@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     imageCard: {
         width: '100%',
         maxWidth: '250px'
-    }
+    },
+  
 }))
 
 export default useStyles

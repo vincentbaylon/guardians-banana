@@ -30,10 +30,9 @@ tate = Character.create!(character_name: "Tate", klass_id: cleric.id, is_hero: t
 vince = Character.create!(character_name: "Vince", klass_id: assassin.id, is_hero: true)
 
 Battle.create!(player_character_id: 1, non_player_character_id: 1)
-
+User.create!(username: "Aaron", password:"dopest")
 high_score = HighScore.create!(user_id: 1, score: 1)
-
-klass_skill = KlassSkill.create!(klass_id: klass.id.first, skill_id: skill.id.first)
-
 skill = Skill.create!(skill_name: 'Gut Punch', flavor_text: "Punches you in the gut Before you can have a chance to block", skill_effect: 5)
+klass_skill = KlassSkill.create!(klass_id: Klass.ids.first, skill_id: Skill.ids.first)
+
 

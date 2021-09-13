@@ -15,11 +15,21 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { useEffect, useState } from 'react'
+import Blue from '../assets/blue-bg.png'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    maxWidth: 752,
+    // maxWidth: 752,
+    backgroundImage: `url(${Blue})`,
+    backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        minWidth: '100vw',
+
   },
   demo: {
     backgroundColor: theme.palette.background.paper,
@@ -29,18 +39,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
-}
+
 
 function HighScore() {
   const classes = useStyles();
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
+  const [high, setHigh] = useState([])
+
+  function generate(element) {
+    return high.map((value) =>
+      React.cloneElement(element, {
+        key: value,
+      }),
+    );
+  }
+
+
+  useEffect(() =>{
+    fetch('http://localhost:4000/high_scores')
+    .then((r) => r.json())
+    .then(setHigh)
+        
+    },[])
+
+    function displayScores(){
+        return ( 
+        high.map((score) => (
+            // score.map((scr) => ()
+            
+            
+            <p>Name:{score.user.username} Points: {score.score}{console.log(score)}</p>
+         ))
+        )
+        
+    }
+    function displayUsername(){
+
+
+    }
 
   return (
     <div className={classes.root}>
@@ -48,7 +85,7 @@ function HighScore() {
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <Typography variant="h6" className={classes.title}>
-            Avatar with text
+            HighScores
           </Typography>
           <div className={classes.demo}>
             <List dense={dense}>
@@ -60,7 +97,7 @@ function HighScore() {
                     </Avatar>
                   </ListItemAvatar>
                   <ListItemText
-                    primary="Single-line item"
+                    primary={displayScores()}
                     secondary={secondary ? 'Secondary text' : null}
                   />
                 </ListItem>,

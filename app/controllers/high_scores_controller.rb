@@ -4,7 +4,7 @@ class HighScoresController < ApplicationController
   before_action :authorize, except: [ :index, :show ]
 
   def index
-    render json: HighScore.all, status: :ok
+    render json: HighScore.all, include: :user, status: :ok
   end
 
   def show

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :battles, only: [ :create, :update ]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/high_scores', to: 'high_scores#index'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
