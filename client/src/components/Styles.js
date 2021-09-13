@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: '100vw',
     },
     height: {
-        minHeight: '100vh'
+        minHeight: '50vh'
     },
     image: {
         width: '100%',
