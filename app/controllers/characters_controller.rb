@@ -29,4 +29,8 @@ class CharactersController < ApplicationController
   def find_character
     @character = Character.find(params[:id])
   end
+
+  def character_params
+    params.permit(:character_name, :klass_id, :is_hero, :max_hp)
+  end
 end
