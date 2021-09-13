@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 
 import Login from './Login'
 import Account from './Account'
+import Character from './Character'
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <Switch>
           <Route path="/account">
             <Account />
+          </Route>
+          <Route path="/character">
+            <Character />
           </Route>
           <Route exact path="/">
             <Login />
