@@ -3,6 +3,7 @@ import { Route, Switch, useHistory } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import HighScore from './HighScore';
+import Battle from './Battle'
 
 import Login from './Login';
 import Account from './Account';
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/high_scores">
             <HighScore />
+          </Route>
+          <Route>
+            <Battle />
           </Route>
         </Switch>
       </Container>

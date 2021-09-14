@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
     imageCard: {
         width: '100%',
         height: '160px',
-        objectFit: 'cover'
+        objectFit: 'cover',
+        maxWidth: '150px'
     },
     paper: {
         background: 'white',
