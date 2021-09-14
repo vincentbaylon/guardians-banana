@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
   create_table "battles", force: :cascade do |t|
     t.integer "player_character_id", null: false
     t.integer "non_player_character_id", null: false
-    t.integer "hero_hp"
-    t.integer "enemy_hp"
     t.integer "turn", default: 0
+    t.integer "damage"
+    t.string "attack_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
     t.string "character_name"
     t.string "image_url"
     t.bigint "klass_id", null: false
-    t.boolean "is_hero", default: true
+    t.boolean "is_hero", default: false
     t.integer "max_hp", default: 100
-    t.integer "current_hp"
+    t.integer "current_hp", default: 100
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

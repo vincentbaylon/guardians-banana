@@ -6,7 +6,7 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       t.belongs_to :klass, null: false, foriegn_key: true
       t.boolean :is_hero, default: false
       t.integer :max_hp, default: 100
-      t.integer :current_hp
+      t.integer :current_hp, default: 100
       t.belongs_to :user, null: false, foriegn_key: true
 
       t.timestamps
