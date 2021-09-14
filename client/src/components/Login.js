@@ -48,7 +48,7 @@ function Login() {
             <form>
                 <Grid container spacing={4} justifyContent="center" alignItems="center" direction="column" className={classes.height}>
                     <Grid item>
-                        <img src={Logo} className={classes.image} />
+                        <img src={Logo} className={classes.logo} />
                     </Grid>
 
                     <Grid item>

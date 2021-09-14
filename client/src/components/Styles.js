@@ -24,19 +24,26 @@ const useStyles = makeStyles((theme) => ({
     },
     image: {
         width: '100%',
-        maxWidth: '750px'
+        height: '400px',
+        maxHeight: '500px'
+    },
+    logo: {
+        width: '100%',
+        maxHeight: '500px'
     },
     imageCard: {
         width: '100%',
-        maxWidth: '150px'
+        height: '150px',
+        objectFit: 'cover'
     },
     paper: {
-        background: 'black',
+        background: 'white',
         display: 'inline-block',
-        width: '200px'
+        width: '200px',
+        height: '200px'
     },
     characterContainer: {
-        
+        width: '1250px'
     }
 }))
 
