@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Grid } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Button } from '@material-ui/core'
@@ -6,10 +7,11 @@ import useStyles from './Styles'
 
 import CharacterCard from './CharacterCard'
 
-function Character() {
+function Character({ user, selectedChar, setSelectedChar }) {
+    const history = useHistory()
     const classes = useStyles()
     const [characters, setCharacters] = useState([])
-    const [selectedChar, setSelectedChar] = useState({character_name: "A Character"})
+    const [oldChar, setOldChar] = useState(selectedChar)
 
     useEffect(() => {
         fetch('http://localhost:3000/characters')
@@ -23,19 +25,34 @@ function Character() {
         return <CharacterCard key={eachChar.id} character={eachChar} setSelectedChar={setSelectedChar} />
     })
 
+    const handleClick = () => {
+        let body = { user_id: user.id, character_id: selectedChar.id }
+        fetch(`http://localhost:3000/user_characters/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(res => res.json())
+            .then(() => {
+                history.goBack()
+            })
+    }
+
     return (
         <>
             <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" className={classes.height} spacing={0}>
                 <Grid item className={classes.background} xs>
-                    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} className={classes.characterContainer} xs={12}>
+                    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} className={classes.characterContainer}>
                         {characterData}
                     </Grid>
                     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0}>
                         <Grid item xs style={{ textAlign: "center" }}>
-                            <img src={selectedChar.image_url} className={classes.image} />
+                            <img src={selectedChar ? selectedChar.image_url : undefined} className={classes.image} />
                         </Grid>
                         <Grid item xs style={{ textAlign: "center" }}>
-                            <Button variant="contained" color="secondary" size="large">{`Select ${selectedChar.character_name}`}</Button>
+                            <Button variant="contained" color="secondary" size="large" onClick={handleClick}>{`Select ${selectedChar ? selectedChar.character_name : "A Character"}`}</Button>
                         </Grid>
                     </Grid>
                 </Grid>

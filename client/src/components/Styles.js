@@ -3,6 +3,10 @@ import ForestBG from '../assets/forest-bg.png'
 import Forest2BG from '../assets/forest2-bg.png'
 
 const useStyles = makeStyles((theme) => ({
+    main: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
     background: {
         backgroundImage: `url(${ForestBG})`,
         backgroundRepeat: 'no-repeat',
@@ -23,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '100vh'
     },
     halfHeight: {
-        minHeight: '50vh'
+        minHeight: '100vh'
     },
     image: {
         width: '100%',
@@ -50,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
     },
     demo: {
         backgroundColor: theme.palette.background.paper,
-        // width: '400px'
     },
     title: {
         margin: theme.spacing(4, 0, 2),

@@ -8,9 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import useStyles from './Styles'
+import { Button } from '@material-ui/core'
 
 function HighScore() {
+  const history = useHistory()
   const classes = useStyles();
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
@@ -36,19 +39,22 @@ function HighScore() {
         <Grid item>
           <Typography variant="h3" align="left">
             {score.user.username}
-          </Typography> 
+          </Typography>
           <Typography variant="h5" align="right">
             {score.score}
-          </Typography> 
+          </Typography>
         </Grid >
       ))
     )
   }
 
+  const handleBackClick = () => { history.goBack() }
+
   return (
     <>
       <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.height} spacing={0}>
         <Grid item className={classes.background} xs={12}>
+          <Button variant="contained" color="primary" onClick={handleBackClick}>Back</Button>
           <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0} className={classes.characterContainer} xs={12}>
             <Grid container spacing={2} xs={12} direction="column" justifyContent="center" alignContent="center" alignItems="center">
               <Grid item xs={12} md={6} style={{ textAlign: "center" }}>

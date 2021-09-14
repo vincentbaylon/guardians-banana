@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-  before_action :authorize, except: :index
+  # before_action :authorize, except: :index
   before_action :find_character, except: :index
   
   def index
@@ -31,6 +31,6 @@ class CharactersController < ApplicationController
   end
 
   def character_params
-    params.permit(:character_name, :klass_id, :is_hero, :max_hp)
+    params.permit(:character_name, :klass_id, :is_hero, :max_hp, :user_id)
   end
 end

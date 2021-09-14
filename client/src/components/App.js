@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { React, useState } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import HighScore from './HighScore';
@@ -11,19 +11,29 @@ import Character from './Character';
 import Fetch from './Fetch'
 
 function App() {
+  const history = useHistory()
+  const [user, setUser] = useState()
+  const [selectedChar, setSelectedChar] = useState({})
+
+  const onLogout = () => {
+    setUser()
+    setSelectedChar({})
+    history.push('/')
+  }
+
   return (
     <div>
       <CssBaseline />
       <Container fixed>
         <Switch>
           <Route path="/account">
-            <Account />
+            <Account user={user} selectedChar={selectedChar} onLogout={onLogout} />
           </Route>
           <Route path="/character">
-            <Character />
+            <Character user={user} setSelectedChar={setSelectedChar} selectedChar={selectedChar} />
           </Route>
           <Route exact path="/">
-            <Login />
+            <Login setUser={setUser} setSelectedChar={setSelectedChar} />
           </Route>
           <Route path="/high_scores">
             <HighScore />
