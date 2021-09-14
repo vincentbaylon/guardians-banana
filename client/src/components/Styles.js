@@ -49,11 +49,16 @@ const useStyles = makeStyles((theme) => ({
         // width: '1250px'
     },
     demo: {
-        backgroundColor: theme.palette.background.paper,
-        // width: '400px'
+        // backgroundColor: theme.palette.background.paper,
+        width: '400px',
+        backdropFilter: 'blur(4px)',
+        textAlign: 'center',
+        color: 'gray',
+        borderRadius: '10px',
     },
     title: {
         margin: theme.spacing(4, 0, 2),
+        color: "#FCC201"
     },
 }))
 
