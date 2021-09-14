@@ -43,6 +43,8 @@ Battle.create!(player_character_id: lantz.id, non_player_character_id: obi.id)
 high_score = HighScore.create!(user_id: vince_user.id, score: 100)
 
 skill = Skill.create!(skill_name: 'Gut Punch', flavor_text: "Punches you in the gut Before you can have a chance to block", skill_effect: 5)
+klass_skill = KlassSkill.create!(klass_id: Klass.ids.first, skill_id: Skill.ids.first)
+
 
 klass_skill = KlassSkill.create!(klass_id: Klass.ids.first, skill_id: Skill.ids.first)
 
