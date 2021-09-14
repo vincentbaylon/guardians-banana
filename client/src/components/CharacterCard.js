@@ -17,7 +17,7 @@ function CharacterCard({ character, setSelectedChar }) {
   
     return (
         <>
-            <Grid item xs style={{ textAlign: "center" }}>
+            <Grid item xs={2} xl={2} style={{ textAlign: "center" }}>
                 <Paper variant="outlined" elevation={2} className={classes.paper} onClick={handleClick}>
                     <img src={image_url} className={classes.imageCard} />
                     <Typography variant="h5" color="textPrimary">

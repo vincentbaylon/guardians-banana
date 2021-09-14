@@ -18,7 +18,7 @@ function Account() {
                         <Grid item xs={12}>
                             <Button variant="contained" color="secondary" size="large">Start Battle!</Button>
                         </Grid>
-                        <Grid container spacing={0} alignItems="center" alignContent="center" justifyContent="center" className={classes.height}>
+                        <Grid container spacing={0} alignItems="center" alignContent="center" justifyContent="center" >
                             <Grid item xs>
 
                             </Grid>

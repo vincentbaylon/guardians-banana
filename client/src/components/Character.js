@@ -26,11 +26,11 @@ function Character() {
     return (
         <>
             <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" className={classes.height} spacing={0}>
-                <Grid item className={classes.backgroundTwo} xs>
-                    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={1} className={classes.characterContainer} xs={12}>
+                <Grid item className={classes.background} xs>
+                    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} className={classes.characterContainer} xs={12}>
                         {characterData}
                     </Grid>
-                    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={1}>
+                    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0}>
                         <Grid item xs style={{ textAlign: "center" }}>
                             <img src={selectedChar.image_url} className={classes.image} />
                         </Grid>

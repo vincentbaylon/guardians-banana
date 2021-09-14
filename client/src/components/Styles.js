@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
         minWidth: '100vw',
     },
     height: {
+        minHeight: '100vh'
+    },
+    halfHeight: {
         minHeight: '50vh'
     },
     image: {
@@ -33,18 +36,25 @@ const useStyles = makeStyles((theme) => ({
     },
     imageCard: {
         width: '100%',
-        height: '150px',
+        height: '160px',
         objectFit: 'cover'
     },
     paper: {
         background: 'white',
         display: 'inline-block',
         width: '200px',
-        height: '200px'
+        height: '200px',
     },
     characterContainer: {
-        width: '1250px'
-    }
+        // width: '1250px'
+    },
+    demo: {
+        backgroundColor: theme.palette.background.paper,
+        // width: '400px'
+    },
+    title: {
+        margin: theme.spacing(4, 0, 2),
+    },
 }))
 
 export default useStyles
