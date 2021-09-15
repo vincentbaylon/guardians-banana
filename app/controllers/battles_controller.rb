@@ -31,7 +31,6 @@ class BattlesController < ApplicationController
 
 
   def battle_params
-    #add skill name and skill effect as params?
-    params.permit(:player_character_id, :non_player_character_id, :skill_id)
+    params.permit(:player_character_id, :non_player_character_id)
   end
 end
