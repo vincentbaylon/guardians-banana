@@ -17,7 +17,7 @@ function Account({ user, selectedChar, onLogout }) {
         })
         .then(onLogout)
     }
-    const handleBattleClick = () => { }
+    const handleBattleClick = () => { history.push('/battle') }
     const handleScoreClick = () => { history.push('/high_scores') }
 
     return (

@@ -1,6 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles'
 import ForestBG from '../assets/forest-bg.png'
 import Forest2BG from '../assets/forest2-bg.png'
+import Blue from '../assets/blue-bg.png'
+import Mushroom from '../assets/mushroom-bg.png'
+import Pink from '../assets/pink-bg.png'
+import Waterfall from '../assets/waterfall-bg.png'
+
+const battleBackgrounds = [Blue, Mushroom, Pink, Waterfall]
+
+const randomBackground = battleBackgrounds[Math.floor(Math.random() * battleBackgrounds.length)]
 
 const useStyles = makeStyles((theme) => ({
     main: {
@@ -16,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: '100vw',
     },
     backgroundTwo: {
-        backgroundImage: `url(${Forest2BG})`,
+        backgroundImage: `url(${randomBackground})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -42,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '160px',
         objectFit: 'cover',
-        maxWidth: '150px'
     },
     paper: {
         background: 'white',

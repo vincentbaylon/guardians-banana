@@ -1,6 +1,6 @@
 class Character < ApplicationRecord
 belongs_to :klass 
-has_many :user_characters
+has_many :user_characters, dependent: :destroy
 has_many :users, through: :user_characters
 
 has_many :player_characters, class_name: "Battle", foreign_key: "player_character_id"
