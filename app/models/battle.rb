@@ -6,7 +6,6 @@ class Battle < ApplicationRecord
     to_hit = rand(1..6)
     damage_roll = rand(1..10)
     skill = Skill.find_by(id: skill_id)
-    byebug
 
     # case skill_name
     # when 'damage'
