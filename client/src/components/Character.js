@@ -26,6 +26,9 @@ function Character({ user, selectedChar, setSelectedChar }) {
     })
 
     const handleClick = () => {
+        fetch(`http://localhost:3000/user_characters/${user.id}`, {
+            method: 'DELETE'
+        })
         let body = { user_id: user.id, character_id: selectedChar.id }
         fetch(`http://localhost:3000/user_characters/`, {
             method: 'POST',
@@ -35,7 +38,8 @@ function Character({ user, selectedChar, setSelectedChar }) {
             body: JSON.stringify(body)
         })
             .then(res => res.json())
-            .then(() => {
+            .then((data) => {
+                console.log(data)
                 history.goBack()
             })
     }

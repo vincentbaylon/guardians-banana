@@ -9,10 +9,12 @@
 Battle.destroy_all
 KlassSkill.destroy_all
 Skill.destroy_all
+UserCharacter.destroy_all
 Character.destroy_all
 Klass.destroy_all
 HighScore.destroy_all
 User.destroy_all
+
 
 fighter  = Klass.create!(klass_name: "Fighter", attack_bonus: 1, defense_bonus: 1)
 wizard   = Klass.create!(klass_name: "Wizard", attack_bonus: 1, defense_bonus: 1)
