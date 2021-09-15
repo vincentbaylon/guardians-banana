@@ -6,9 +6,39 @@ import ProgressBar from './ProgressBar'
 import Hero from '../assets/characters/vince-idle.png'
 import Enemy from '../assets/characters/abraham-idle.png'
 
+import { useState, useEffect } from 'react'
+
 function Battle() {
   const classes = useStyles()
 
+  const [battle, setBattle] = useState()
+  const [enemy, setEnemy] = useState()
+  const [skillOne, setSkillOne] = useState({
+    skill_name: "",
+    skill_effect: "",
+    skill_cooldown: 0
+  })
+  const [skillTwo, setSkillTwo] = useState({
+    skill_name: "",
+    skill_effect: "",
+    skill_cooldown: 0
+  })
+  const [skillThree, setSkillThree] = useState({
+    skill_name: "",
+    skill_effect: "",
+    skill_cooldown: 0
+  })
+  const [skillFour, setSkillFour] = useState({
+    skill_name: "",
+    skill_effect: "",
+    skill_cooldown: 0
+  })
+
+  useEffect(() => {
+    // will need to update all the states on every render
+    // will need to fetch skills on initial load (may be able to do this using a serializer to reduce the number of fetches)
+    // 
+  },)
   return (
     <>
       <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.height} spacing={0}>
