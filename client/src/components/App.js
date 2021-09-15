@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import HighScore from './HighScore';
 import Battle from './Battle'
+import Navbar from './Navbar';
 
 import Login from './Login';
 import Account from './Account';
@@ -37,6 +38,8 @@ function App() {
     <div>
       <CssBaseline />
       <Container fixed>
+        <> <Navbar/> </>
+        
         <Switch>
           <Route path="/account">
             <Account user={user} selectedChar={selectedChar} onLogout={onLogout} />
