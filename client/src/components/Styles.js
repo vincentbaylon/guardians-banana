@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'center',
         minHeight: '100vh',
         minWidth: '100vw',
+        
     },
     height: {
         minHeight: '100vh'
@@ -40,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
         objectFit: 'cover'
     },
     paper: {
-        background: 'white',
         display: 'inline-block',
         width: '200px',
         height: '200px',
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
     demo: {
         // backgroundColor: theme.palette.background.paper,
+        
         width: '400px',
         backdropFilter: 'blur(4px)',
         textAlign: 'center',
@@ -57,8 +58,13 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '10px',
     },
     title: {
+        marginTop: '10vh',
         margin: theme.spacing(4, 0, 2),
         color: "#FCC201"
+    },
+    navbar: {
+        backgroundColor: 'gray'
+
     },
 }))
 
