@@ -1,8 +1,9 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { React, useState, useEffect } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import HighScore from './HighScore';
+import Battle from './Battle'
 
 import Login from './Login';
 import Account from './Account';
@@ -11,22 +12,46 @@ import Character from './Character';
 import Fetch from './Fetch'
 
 function App() {
+  const history = useHistory()
+  const [user, setUser] = useState()
+  const [selectedChar, setSelectedChar] = useState({})
+
+  useEffect(() => {
+    fetch('http://localhost:3000/me').then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          setUser(user)
+          setSelectedChar(user.characters[0])
+        });
+      }
+    });
+  }, []);
+
+  const onLogout = () => {
+    setUser()
+    setSelectedChar({})
+    history.push('/')
+  }
+
   return (
     <div>
       <CssBaseline />
       <Container fixed>
         <Switch>
           <Route path="/account">
-            <Account />
+            <Account user={user} selectedChar={selectedChar} onLogout={onLogout} />
           </Route>
           <Route path="/character">
-            <Character />
+            <Character user={user} setSelectedChar={setSelectedChar} selectedChar={selectedChar} />
           </Route>
           <Route exact path="/">
-            <Login />
+            <Login setUser={setUser} setSelectedChar={setSelectedChar} />
           </Route>
           <Route path="/high_scores">
             <HighScore />
+          </Route>
+          <Route path="/battle">
+            <Battle user={user} selectedChar={selectedChar}/>
           </Route>
         </Switch>
       </Container>

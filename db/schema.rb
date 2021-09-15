@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_12_004523) do
+ActiveRecord::Schema.define(version: 2021_09_14_213514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
   create_table "battles", force: :cascade do |t|
     t.integer "player_character_id", null: false
     t.integer "non_player_character_id", null: false
-    t.integer "hero_hp"
-    t.integer "enemy_hp"
     t.integer "turn", default: 0
+    t.integer "damage"
+    t.string "attack_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -31,12 +31,10 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
     t.bigint "klass_id", null: false
     t.boolean "is_hero", default: false
     t.integer "max_hp", default: 100
-    t.integer "current_hp"
-    t.bigint "user_id", null: false
+    t.integer "current_hp", default: 100
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["klass_id"], name: "index_characters_on_klass_id"
-    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
   create_table "high_scores", force: :cascade do |t|
@@ -72,6 +70,15 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_characters", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "character_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_user_characters_on_character_id"
+    t.index ["user_id"], name: "index_user_characters_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -82,4 +89,6 @@ ActiveRecord::Schema.define(version: 2021_09_12_004523) do
   add_foreign_key "high_scores", "users"
   add_foreign_key "klass_skills", "klasses"
   add_foreign_key "klass_skills", "skills"
+  add_foreign_key "user_characters", "characters"
+  add_foreign_key "user_characters", "users"
 end

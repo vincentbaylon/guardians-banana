@@ -7,13 +7,12 @@ import { Button } from '@material-ui/core'
 import Logo from '../assets/guardians-logo.png'
 import useStyles from './Styles'
 
-function Login() {
+function Login({ setUser, setSelectedChar }) {
     const classes = useStyles()
     const history = useHistory()
     const [login, setLogin] = useState(true)
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    const [user, setUser] = useState()
     
 
     const handleClick = () => {
@@ -34,11 +33,14 @@ function Login() {
           },
           body: JSON.stringify(userCred)
         }).then(r => r.json()).then(data => {
-            if (data.error === undefined){
+            if (data.errors === undefined){
                 setUser(data)
+                if (login) {
+                    setSelectedChar(data.characters[0])
+                }
                 history.push('/account')
             }else{
-                alert(data.error)
+                alert(data.errors)
             }
         })
     }
@@ -67,7 +69,7 @@ function Login() {
                             {login ? "Log In" : "Sign Up"}
                         </Button>
                     </Grid>
-                    <Grid item direction="row">
+                    <Grid item>
                         {login ? "No account?" : "Already have an account?"}
                         <Button variant="text" color={login ? "secondary" : "primary"} size="small" onClick={handleClick}>
                             {login ? "Sign Up" : "Log In"}
