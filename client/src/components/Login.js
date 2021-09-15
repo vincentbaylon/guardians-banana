@@ -33,14 +33,14 @@ function Login({ setUser, setSelectedChar }) {
           },
           body: JSON.stringify(userCred)
         }).then(r => r.json()).then(data => {
-            if (data.error === undefined){
+            if (data.errors === undefined){
                 setUser(data)
                 if (login) {
-                    setSelectedChar(data.user_characters)
+                    setSelectedChar(data.characters[0])
                 }
                 history.push('/account')
             }else{
-                alert(data.error)
+                alert(data.errors)
             }
         })
     }
