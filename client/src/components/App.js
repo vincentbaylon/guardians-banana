@@ -1,15 +1,13 @@
 import { React, useState, useEffect } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import HighScore from './HighScore';
 import Battle from './Battle'
 import Navbar from './Navbar';
-
 import Login from './Login';
 import Account from './Account';
 import Character from './Character';
-
 import Fetch from './Fetch'
 
 function App() {
@@ -34,11 +32,14 @@ function App() {
     history.push('/')
   }
 
+    const location = useLocation();
+    // console.log(location);
+
   return (
     <div>
       <CssBaseline />
       <Container fixed>
-        <> <Navbar/> </>
+        {location.pathname == '/' ? null : <Navbar onLogout={onLogout}/> }
         
         <Switch>
           <Route path="/account">
