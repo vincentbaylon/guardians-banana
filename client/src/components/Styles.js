@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'center',
         minHeight: '100vh',
         minWidth: '100vw',
+        backgroundColor: 'black'
     },
     height: {
         minHeight: '100vh'
