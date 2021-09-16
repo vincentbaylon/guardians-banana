@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Grid } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
@@ -5,9 +6,11 @@ import { Button } from '@material-ui/core'
 import useStyles from './Styles'
 import Knight from '../assets/knight-idle.png'
 
-function Account({ user, selectedChar, onLogout }) {
+function Account({ user, selectedChar, onLogout, setEnemy, enemy }) {
     const history = useHistory()
     const classes = useStyles()
+    
+    
 
     const handleSelectClick = () => { history.push('/character') }
     const handleEditClick = () => {  }
@@ -17,9 +20,13 @@ function Account({ user, selectedChar, onLogout }) {
         })
         .then(onLogout)
     }
-    const handleBattleClick = () => { history.push('/battle') }
+    const handleBattleClick = () => { history.push('/battle')}
+
     const handleScoreClick = () => { history.push('/high_scores') }
 
+    useEffect(() => {
+        fetch(`http://localhost:3000/enemy`).then(r => r.json()).then(data => setEnemy(data))
+    }, [])
     return (
         <>
             {console.log(user)}

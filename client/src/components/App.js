@@ -16,7 +16,7 @@ function App() {
   const history = useHistory()
   const [user, setUser] = useState()
   const [selectedChar, setSelectedChar] = useState({})
-
+  const [enemy, setEnemy] = useState()
   useEffect(() => {
     fetch('http://localhost:3000/me').then((response) => {
       if (response.ok) {
@@ -42,7 +42,7 @@ function App() {
         
         <Switch>
           <Route path="/account">
-            <Account user={user} selectedChar={selectedChar} onLogout={onLogout} />
+            <Account user={user} selectedChar={selectedChar} onLogout={onLogout} setEnemy={setEnemy} enemy={enemy} />
           </Route>
           <Route path="/character">
             <Character user={user} setSelectedChar={setSelectedChar} selectedChar={selectedChar} />
@@ -54,7 +54,7 @@ function App() {
             <HighScore />
           </Route>
           <Route path="/battle">
-            <Battle user={user} selectedChar={selectedChar}/>
+            <Battle user={user} selectedChar={selectedChar} setSelectedChar={setSelectedChar} enemy={enemy} setEnemy={setEnemy}/>
           </Route>
         </Switch>
       </Container>

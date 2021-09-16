@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/high_scores', to: 'high_scores#index'
   delete '/user_characters/:user_id', to: 'user_characters#destroy'
   get '/me', to: 'users#show'
+  get '/enemy', to: 'characters#enemy'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

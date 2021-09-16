@@ -1,7 +1,8 @@
 import Filler from "./Filler"
 
 const divStyle = {
-    position: 'relative',
+    marginTop: '30vh',
+    // position: 'relative',
     height: '50px',
     width: '500px',
     borderRadius: '0px',

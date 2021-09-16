@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
   # before_action :authorize, except: :index
-  before_action :find_character, except: :index
+  before_action :find_character, except: [:index, :enemy]
   
   def index
     render json: Character.all, status: :ok
@@ -23,6 +23,11 @@ class CharactersController < ApplicationController
     @character.destroy
     head :no_content
   end
+
+  def enemy
+    render json: Character.all.sample, status: :ok 
+  end
+
 
   private
 
