@@ -13,7 +13,7 @@ function Login({ setUser, setSelectedChar }) {
     const [login, setLogin] = useState(true)
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    
+
 
     const handleClick = () => {
         setLogin(login => !login)
@@ -24,25 +24,42 @@ function Login({ setUser, setSelectedChar }) {
             username: userName,
             password: password
         }
-        let url = ''
-        login ? url = "login" : url = "users"
-        fetch(`http://localhost:3000/${url}`, {
-          method: 'POST',
-          headers: {
-              'Content-Type' : 'application/json'
-          },
-          body: JSON.stringify(userCred)
-        }).then(r => r.json()).then(data => {
-            if (data.errors === undefined){
-                setUser(data)
-                if (login) {
+
+        if (login) {
+            fetch(`http://localhost:3000/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userCred)
+            }).then(r => r.json()).then(data => {
+                if (data.error === undefined) {
+                    setUser(data)
                     setSelectedChar(data.characters[0])
+                    history.push('/account')
+                } else {
+                    alert(data.error)
                 }
-                history.push('/account')
-            }else{
-                alert(data.errors)
-            }
-        })
+            })
+        } else {
+            fetch(`http://localhost:3000/users`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userCred)
+            }).then(r => r.json()).then(data => {
+                if (data.error === undefined) {
+                    setUser(data)
+                    history.push('/account')
+                } else {
+                    alert(data.error)
+                }
+            })
+        }
+
+
+
     }
 
     return (

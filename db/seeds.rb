@@ -36,7 +36,7 @@ whiting = Character.create!(character_name: "Whiting", klass_id: assassin.id, is
 ben = Character.create!(character_name: "Ben", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/gMHkXXd/ben-idle.png")
 sam = Character.create!(character_name: "Sam", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/mJwK8t6/sam-idle.png")
 john = Character.create!(character_name: "John", klass_id: fighter.id, is_hero: true, image_url: "https://i.ibb.co/JdMh91t/john-idle.png")
-aaron = Character.create!(character_name: "Aaron", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/RpSGWLX/aaron-idle.png")
+aaron = Character.create!(character_name: "Aaron", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/RpSGWLX/aaron-idle.png")
 tate = Character.create!(character_name: "Tate", klass_id: cleric.id, is_hero: true, image_url: "https://i.ibb.co/Jr2gNdm/tate-idle.png")
 vince = Character.create!(character_name: "Vince", klass_id: assassin.id, is_hero: true, image_url: "https://i.ibb.co/NTQ6Hy9/vince-idle.png")
 

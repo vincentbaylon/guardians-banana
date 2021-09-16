@@ -1,16 +1,13 @@
 import { React, useState, useEffect } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import HighScore from './HighScore';
 import Battle from './Battle'
 import Navbar from './Navbar';
-
 import Login from './Login';
 import Account from './Account';
 import Character from './Character';
-
-import Fetch from './Fetch'
 
 function App() {
   const history = useHistory()
@@ -21,8 +18,12 @@ function App() {
     fetch('http://localhost:3000/me').then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          setUser(user)
-          setSelectedChar(user.characters[0])
+          console.log(user)
+
+          if (user !== null) {
+            setUser(user)
+            setSelectedChar(user.characters[0])
+          }
         });
       }
     });
@@ -30,16 +31,19 @@ function App() {
 
   const onLogout = () => {
     setUser()
-    setSelectedChar({})
+    setSelectedChar()
     history.push('/')
   }
+
+  const location = useLocation();
+  // console.log(location);
 
   return (
     <div>
       <CssBaseline />
       <Container fixed>
-        <> <Navbar/> </>
-        
+        {location.pathname == '/' || location.pathname == '/battle' ? null : <Navbar onLogout={onLogout} selectedChar={selectedChar} />}
+
         <Switch>
           <Route path="/account">
             <Account user={user} selectedChar={selectedChar} onLogout={onLogout} setEnemy={setEnemy} enemy={enemy} />
@@ -58,7 +62,6 @@ function App() {
           </Route>
         </Switch>
       </Container>
-      <Fetch />
     </div>
   );
 }
