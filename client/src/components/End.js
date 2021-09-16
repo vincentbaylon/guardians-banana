@@ -23,8 +23,9 @@ function End( user ){
         fetch(`http://localhost:4000/high_scores/1`)
         .then( res => res.json())
         .then(setCurrentScore)
-        console.log(currentScore)
+        // console.log(currentScore.score)
         setNewScore(currentScore.score + points)
+        setPoints(25)
     }, [])
 
     function displayScore() {
