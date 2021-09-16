@@ -1,8 +1,6 @@
 class HighScoresSerializer < ActiveModel::Serializer
-  attributes :id, :username
+  attributes :id, :username, 
 
 
-  def name
-    self.object.name
-  end
+  has_many :users,
 end
