@@ -73,7 +73,7 @@ function Battle({ user, selectedChar }) {
             <Grid item xs={12} style={{ textAlign: "center" }}>
 
             </Grid>
-            <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} style={{ height: '85vh' }}>
+            <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} style={{ height: '75vh' }}>
               <Grid item xs={6} style={{ textAlign: "center" }}>
                 <img src={selectedChar.image_url} style={{ height: '500px' }} />
               </Grid>
@@ -93,28 +93,28 @@ function Battle({ user, selectedChar }) {
               <Grid item>
                 <Card variant="outlined">
                   <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
+                    <img src={skill2} style={{ height: '100px' }} />
                   </CardContent>
                 </Card>
               </Grid>
               <Grid item>
                 <Card variant="outlined">
                   <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
+                    <img src={skill3} style={{ height: '100px' }} />
                   </CardContent>
                 </Card>
               </Grid>
               <Grid item>
                 <Card variant="outlined">
                   <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
+                    <img src={skill4} style={{ height: '100px' }} />
                   </CardContent>
                 </Card>
               </Grid>
               <Grid item>
                 <Card variant="outlined">
                   <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
+                    <img src={skill5} style={{ height: '100px' }} />
                   </CardContent>
                 </Card>
               </Grid>

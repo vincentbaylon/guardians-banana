@@ -8,19 +8,22 @@ import Navbar from './Navbar';
 import Login from './Login';
 import Account from './Account';
 import Character from './Character';
-import Fetch from './Fetch'
 
 function App() {
   const history = useHistory()
   const [user, setUser] = useState()
-  const [selectedChar, setSelectedChar] = useState({})
+  const [selectedChar, setSelectedChar] = useState()
 
   useEffect(() => {
     fetch('http://localhost:3000/me').then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          setUser(user)
-          setSelectedChar(user.characters[0])
+          console.log(user)
+
+          if (user !== null) {
+            setUser(user)
+            setSelectedChar(user.characters[0])
+          }
         });
       }
     });
@@ -28,19 +31,19 @@ function App() {
 
   const onLogout = () => {
     setUser()
-    setSelectedChar({})
+    setSelectedChar()
     history.push('/')
   }
 
-    const location = useLocation();
-    // console.log(location);
+  const location = useLocation();
+  // console.log(location);
 
   return (
     <div>
       <CssBaseline />
       <Container fixed>
-        {location.pathname == '/' ? null : <Navbar onLogout={onLogout}/> }
-        
+        {location.pathname == '/' || location.pathname == '/battle' ? null : <Navbar onLogout={onLogout} selectedChar={selectedChar} />}
+
         <Switch>
           <Route path="/account">
             <Account user={user} selectedChar={selectedChar} onLogout={onLogout} setUser={setUser} />
@@ -55,11 +58,10 @@ function App() {
             <HighScore />
           </Route>
           <Route path="/battle">
-            <Battle user={user} selectedChar={selectedChar}/>
+            <Battle user={user} selectedChar={selectedChar} />
           </Route>
         </Switch>
       </Container>
-      <Fetch />
     </div>
   );
 }

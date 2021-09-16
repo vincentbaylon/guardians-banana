@@ -57,13 +57,15 @@ export default function DialogSelect({ user, setUser }) {
         e.preventDefault()
 
         fetch(`http://localhost:3000/users/${user.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type" : "application/json"
-          },
-          body: JSON.stringify({
-            "username" : name
-          })
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                credentials: 'include'
+            },
+            body: JSON.stringify({
+                username: name
+            })
         })
         .then(res => res.json())
         .then(setUser)

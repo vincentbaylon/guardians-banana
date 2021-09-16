@@ -50,13 +50,13 @@ const useStyles = makeStyles((theme) => ({
     },
     imageCard: {
         width: '100%',
-        height: '160px',
+        height: '130px',
         objectFit: 'cover',
     },
     paper: {
         display: 'inline-block',
-        width: '200px',
-        height: '200px',
+        width: '175px',
+        height: '175px',
         margin: '5px',
         backgroundColor: 'firebrick'
     },

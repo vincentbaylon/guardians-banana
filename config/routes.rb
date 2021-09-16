@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [ :create, :show, :update, :destroy ]
+  resources :users, only: [ :show, :create, :update, :destroy ]
   resources :characters, only: [ :index, :show, :create, :update, :destroy]
   resources :battles, only: [ :create, :update ]
   resources :user_characters, only: [ :create ]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/high_scores', to: 'high_scores#index'
+  get '/high_scores/:id', to: 'high_scores#show'
   delete '/user_characters/:user_id', to: 'user_characters#destroy'
   get '/me', to: 'users#show'
 
