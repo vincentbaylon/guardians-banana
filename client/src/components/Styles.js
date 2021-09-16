@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
         width: '400px',
         backdropFilter: 'blur(4px)',
         textAlign: 'center',
-        color: 'gray',
+        color: '#FCC201',
         borderRadius: '10px',
     },
     title: {

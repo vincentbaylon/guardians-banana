@@ -17,13 +17,19 @@ import {AppBar} from '@material-ui/core'
 //   },
 // });
 
-function Navbar() {
+function Navbar(onLogout) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const handleLogoutClick = () => { 
+    fetch('http://localhost:3000/logout', {
+        method: 'DELETE'
+    })
+    .then(onLogout)
+}
 
   
 
@@ -40,9 +46,9 @@ function Navbar() {
             aria-label="icon label tabs example" >
             <Tab component={NavLink} to='/account' icon={<AccountBoxIcon />} label="ACCOUNT" />
             <Tab component={NavLink} to='/high_scores'icon={<EmojiEvents />} label="HI-SCORES" />
+            <Tab component={NavLink} to='/battle'icon={<SportsKabaddiIcon fontSize="large" />} label="BATTLE" />
             <Tab component={NavLink} to='/character'icon={<AccountCircleIcon />} label="CHARACTER" />
-            <Tab component={NavLink} to='/battle'icon={<SportsKabaddiIcon />} label="BATTLE" />
-            <Tab component={NavLink} to='/'icon={<ExitToAppIcon />} label="LOGOUT" />
+            <Tab component={NavLink} to='/'icon={<ExitToAppIcon />} label="LOGOUT" onClick={handleLogoutClick} />
 
         </Tabs>
         </AppBar>
