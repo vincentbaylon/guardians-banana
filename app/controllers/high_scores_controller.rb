@@ -8,7 +8,7 @@ class HighScoresController < ApplicationController
   end
 
   def show
-    render json: @high_score, status: :ok
+    render json: @high_score, include: :user, status: :ok
   end
 
   def create
@@ -18,7 +18,7 @@ class HighScoresController < ApplicationController
   private
 
   def find_score
-    @high_score = HighScore.find_by(user_id: params[:user_id])
+    @high_score = HighScore.find( 1)
   end
 
   def high_score_params

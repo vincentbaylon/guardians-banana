@@ -8,6 +8,8 @@ import Navbar from './Navbar';
 import Login from './Login';
 import Account from './Account';
 import Character from './Character';
+import Fetch from './Fetch'
+import End from './End'
 
 function App() {
   const history = useHistory()
@@ -59,6 +61,9 @@ function App() {
           </Route>
           <Route path="/battle">
             <Battle user={user} selectedChar={selectedChar} setSelectedChar={setSelectedChar} enemy={enemy} setEnemy={setEnemy}/>
+          </Route>
+          <Route path="/end">
+            <End user={user} />
           </Route>
         </Switch>
       </Container>
