@@ -46,7 +46,7 @@ function Character({ user, selectedChar, setSelectedChar }) {
 
     return (
         <>
-            <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" className={classes.height} spacing={0}>
+            <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" className={classes.characterGrid} spacing={0}>
                 <Grid item className={classes.background} xs>
                     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} className={classes.characterContainer}>
                         {characterData}

@@ -13,7 +13,7 @@ class UserCharactersController < ApplicationController
     private
   
     def find_user_char
-      @user_char = UserCharacter.find_by(user_id: params[:user_id])
+        @user_char = UserCharacter.find_by(user_id: params[:user_id])
     end
   
     def user_char_params

@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
     image: {
         width: '100%',
         height: '400px',
-        maxHeight: '500px'
+        maxHeight: '500px',
+        objectFit: 'contain'
     },
     logo: {
         width: '100%',
@@ -56,13 +57,13 @@ const useStyles = makeStyles((theme) => ({
         display: 'inline-block',
         width: '200px',
         height: '200px',
+        margin: '5px',
+        backgroundColor: 'firebrick'
     },
     characterContainer: {
         // width: '1250px'
     },
     demo: {
-        // backgroundColor: theme.palette.background.paper,
-        
         width: '400px',
         backdropFilter: 'blur(4px)',
         textAlign: 'center',
@@ -78,6 +79,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'gray'
 
     },
+    characterGrid: {
+        marginTop: '5vh',
+        minHeight: '75vh'
+    }
 }))
 
 export default useStyles

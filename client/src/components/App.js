@@ -42,7 +42,7 @@ function App() {
         
         <Switch>
           <Route path="/account">
-            <Account user={user} selectedChar={selectedChar} onLogout={onLogout} />
+            <Account user={user} selectedChar={selectedChar} onLogout={onLogout} setUser={setUser} />
           </Route>
           <Route path="/character">
             <Character user={user} setSelectedChar={setSelectedChar} selectedChar={selectedChar} />
