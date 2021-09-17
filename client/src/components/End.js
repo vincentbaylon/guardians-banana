@@ -9,24 +9,41 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import useStyles from './Styles'
-
+import { Button } from '@material-ui/core'
+import { NavLink } from 'react-router-dom'
 
 
 function End( user ){
     const classes = useStyles();
     const [currentScore, setCurrentScore] = useState(0)
-    const [newScore, setNewScore] = useState(0)
     const [points, setPoints] = useState(0)
-
+    const [newScore, setNewScore] = useState(0)
+    // const if currentScore.score = NaN return 0
     
     useEffect(() => {
-        fetch(`http://localhost:4000/high_scores/1`)
+        fetch(`http://localhost:4000/high_scores/${user.id}`)
         .then( res => res.json())
         .then(setCurrentScore)
-        // console.log(currentScore.score)
+        console.log(user)
         setNewScore(currentScore.score + points)
         setPoints(25)
     }, [])
+
+
+    function handleNextBattle(){
+        const scoreUpdate = {
+            score: newScore,
+            user_id: user.id
+        }
+            fetch(`http://localhost:4000/high_scores/${user.id}`,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(scoreUpdate)
+
+        })
+    }
 
     function displayScore() {
             return (
@@ -62,6 +79,9 @@ function End( user ){
                                 <ListItemText
                                 primary={displayScore()}
                                 />
+                                {/* <Button component={NavLink} to='/battle'/> */}
+                                <Button component={NavLink} to='/battle' variant="contained" color="secondary" size="large" onClick={handleNextBattle()}>NEXT BATTLE</Button>
+
                             </ListItem>
                         </List>
                         </div>
