@@ -15,12 +15,14 @@ function App() {
   const [user, setUser] = useState()
   const [selectedChar, setSelectedChar] = useState({})
   const [enemy, setEnemy] = useState()
+
   useEffect(() => {
     fetch('/me').then((response) => {
       if (response.ok) {
         response.json().then((user) => {
           if (user !== null) {
             setUser(user)
+
             if (user.characters !== undefined) {
               setSelectedChar(user.characters[0])
             }

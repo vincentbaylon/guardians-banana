@@ -38,7 +38,7 @@ function Battle({ user, selectedChar, enemy, setSelectedChar, setEnemy }) {
     return ( 
       <>
         {endOfBattle()}
-        <End />
+        <End user={user} />
       </>
     )
   }

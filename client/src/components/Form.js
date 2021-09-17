@@ -33,9 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function DialogSelect({ user, setUser, onLogout }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    const [age, setAge] = React.useState('');
     const [name, setName] = React.useState('')
-    const [password, setPassword] = React.useState("")
 
     const handleChange = (e) => {
         setName(e.target.value)

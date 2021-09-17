@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
         objectFit: 'contain'
     },
     logo: {
+        marginTop: '5vh',
         width: '100%',
         maxHeight: '500px'
     },

@@ -4,9 +4,6 @@ import { Paper } from '@material-ui/core'
 import { useState } from 'react'
 import useStyles from './Styles'
 
-import testImage from '../assets/characters/aaron-idle.png'
-
-
 function CharacterCard({ character, setSelectedChar }) {
     const { character_name, image_url } = character
     const classes = useStyles()

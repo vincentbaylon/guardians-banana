@@ -12,27 +12,13 @@ import Form from './Form'
 function Account({ user, selectedChar, onLogout, setEnemy, setUser, }) {
     const history = useHistory()
     const classes = useStyles()
-    
-    
-
-    const handleSelectClick = () => { history.push('/character') }
-    const handleEditClick = () => {  }
-    const handleLogoutClick = () => { 
-        fetch('http://localhost:3000/logout', {
-            method: 'DELETE'
-        })
-        .then(onLogout)
-    }
-    const handleBattleClick = () => { history.push('/battle')}
-
-    const handleScoreClick = () => { history.push('/high_scores') }
 
     useEffect(() => {
         fetch(`http://localhost:3000/enemy`).then(r => r.json()).then(data => setEnemy(data))
     }, [])
     return (
         <>
-            {console.log(user)}
+            {console.log(user), console.log(selectedChar)}
             <Grid container justifyContent="center" alignContent="center" direction="column" alignItems="center" spacing={0} >
                 <Grid item xs={12} className={classes.background}>
                     <Grid container spacing={0} justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.halfHeight}>
@@ -40,7 +26,7 @@ function Account({ user, selectedChar, onLogout, setEnemy, setUser, }) {
                             <Card content style={{ backgroundColor: "white", marginTop: '20px' }}>
                                 <Grid item xs={12} style={{ textAlign: "center" }}>
                                     {selectedChar ?
-                                        <img src={selectedChar.idle_url} className={classes.image} /> :
+                                        <img src={selectedChar.image_url} className={classes.image} /> :
                                         <Typography variant="h5">
                                             Select a character
                                         </Typography>

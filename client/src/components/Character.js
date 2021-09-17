@@ -64,7 +64,7 @@ function Character({ user, selectedChar, setSelectedChar }) {
                     </Grid>
                     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0}>
                         <Grid item xs style={{ textAlign: "center" }}>
-                            <img src={selectedChar ? selectedChar.idle_url : undefined} className={classes.image} />
+                            <img src={selectedChar ? selectedChar.image_url : undefined} className={classes.image} />
                         </Grid>
                         <Grid item xs style={{ textAlign: "center" }}>
                             <Button variant="contained" color="secondary" size="large" onClick={handleClick}>{`Select ${selectedChar ? selectedChar.character_name : "A Character"}`}</Button>

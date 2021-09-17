@@ -25,7 +25,7 @@ function Navbar({ onLogout, selectedChar }) {
     setValue(newValue);
   };
   const handleLogoutClick = () => {
-    fetch('http://localhost:3000/logout', {
+    fetch('/logout', {
       method: 'DELETE',
       credentials: 'include'
     })

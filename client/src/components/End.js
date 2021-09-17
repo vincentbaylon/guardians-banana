@@ -12,7 +12,7 @@ import useStyles from './Styles'
 
 
 
-function End( user ){
+function End({ user }){
     const classes = useStyles();
     const [currentScore, setCurrentScore] = useState(0)
     const [newScore, setNewScore] = useState(0)
@@ -20,7 +20,7 @@ function End( user ){
 
     
     useEffect(() => {
-        fetch(`http://localhost:4000/high_scores/1`)
+        fetch(`http://localhost:4000/high_scores/${user.id}`)
         .then( res => res.json())
         .then(setCurrentScore)
         // console.log(currentScore.score)
