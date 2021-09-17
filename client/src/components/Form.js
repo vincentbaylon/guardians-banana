@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function DialogSelect({ user, setUser }) {
+export default function DialogSelect({ user, setUser, onLogout }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [age, setAge] = React.useState('');
@@ -50,7 +50,10 @@ export default function DialogSelect({ user, setUser }) {
     };
 
     const handleDelete = () => {
-        alert("Are you sure?")
+        fetch(`/users/${user.id}`, {
+            method: 'DELETE',
+        })
+        .then(onLogout) 
     }
 
     const handleSubmit = (e) => {

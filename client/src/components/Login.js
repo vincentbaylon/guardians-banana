@@ -80,7 +80,7 @@ function Login({ setUser, setSelectedChar }) {
                         <TextField onChange={(e) => setUserName(e.target.value)} id="username" label="Username" defaultValue="" />
                     </Grid>
                     <Grid item>
-                        <TextField onChange={(e) => setPassword(e.target.value)} id="password" label="Password" defaultValue="" />
+                        <TextField onChange={(e) => setPassword(e.target.value)} id="password" type="password" label="Password" defaultValue="" />
                     </Grid>
                     <Grid item>
                         <Button variant="contained" color={login ? "primary" : "secondary"} type="submit">

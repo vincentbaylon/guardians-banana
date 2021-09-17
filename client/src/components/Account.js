@@ -22,7 +22,7 @@ function Account({ user, setUser, selectedChar, onLogout }) {
                             <Card content style={{ backgroundColor: "white", marginTop: '20px' }}>
                                 <Grid item xs={12} style={{ textAlign: "center" }}>
                                     {selectedChar ?
-                                        <img src={selectedChar.image_url} className={classes.image} /> :
+                                        <img src={selectedChar.idle_url} className={classes.image} /> :
                                         <Typography variant="h5">
                                             Select a character
                                         </Typography>
@@ -30,7 +30,7 @@ function Account({ user, setUser, selectedChar, onLogout }) {
                                 </Grid>
                                 <Grid item xs={12} style={{ textAlign: "center" }}>
                                     <div style={{ padding: '5px', backdropFilter: 'blur(4px)', borderRadius: '5px' }}>
-                                        <Form user={user} setUser={setUser} />
+                                        <Form user={user} setUser={setUser} onLogout={onLogout} />
                                     </div>
                                 </Grid>
                             </Card>

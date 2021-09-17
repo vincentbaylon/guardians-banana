@@ -80,8 +80,8 @@ const useStyles = makeStyles((theme) => ({
 
     },
     characterGrid: {
-        marginTop: '5vh',
-        minHeight: '75vh'
+        marginTop: '6vh',
+        minHeight: '50vh'
     }
 }))
 

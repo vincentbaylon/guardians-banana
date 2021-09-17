@@ -46,11 +46,6 @@ function Character({ user, selectedChar, setSelectedChar }) {
             })
     }
 
-    const joshua = {
-        character_name: "Joshua",
-        image_url: "https://i.ibb.co/GpR92x0/joshua-idle.png"
-    }
-
     return (
         <>
             <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" className={classes.characterGrid} spacing={0}>
@@ -60,16 +55,16 @@ function Character({ user, selectedChar, setSelectedChar }) {
 
                         <Grid item xs={2} xl={2} style={{ textAlign: "center", opacity: '.5' }}>
                             <Paper variant="outlined" elevation={2} className={classes.paper} >
-                                <img src={joshua.image_url} className={classes.imageCard} />
+                                <img src={JoshuaImg} className={classes.imageCard} />
                                 <Typography variant="h5" color="textPrimary">
-                                    {joshua.character_name}
+                                    {"Joshua"}
                                 </Typography>
                             </Paper>
                         </Grid>
                     </Grid>
                     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0}>
                         <Grid item xs style={{ textAlign: "center" }}>
-                            <img src={selectedChar ? selectedChar.image_url : undefined} className={classes.image} />
+                            <img src={selectedChar ? selectedChar.idle_url : undefined} className={classes.image} />
                         </Grid>
                         <Grid item xs style={{ textAlign: "center" }}>
                             <Button variant="contained" color="secondary" size="large" onClick={handleClick}>{`Select ${selectedChar ? selectedChar.character_name : "A Character"}`}</Button>
