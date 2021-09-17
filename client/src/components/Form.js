@@ -34,7 +34,7 @@ export default function DialogSelect({ user, setUser }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [age, setAge] = React.useState('');
-    const [name, setName] = React.useState(user.username)
+    const [name, setName] = React.useState('')
     const [password, setPassword] = React.useState("")
 
     const handleChange = (e) => {
@@ -56,12 +56,11 @@ export default function DialogSelect({ user, setUser }) {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        fetch(`http://localhost:3000/users/${user.id}`, {
+        fetch(`/users/${user.id}`, {
             method: 'PATCH',
+            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-                credentials: 'include'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 username: name
@@ -76,7 +75,7 @@ export default function DialogSelect({ user, setUser }) {
             <Button onClick={handleClickOpen} size="large">
 
                 <Typography variant="h3" className={classes.title}>
-                    {user.username}
+                    {user ? user.username : ''}
                 </Typography>
                 <CreateIcon fontSize="medium" />
 

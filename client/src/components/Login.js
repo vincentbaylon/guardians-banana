@@ -28,8 +28,9 @@ function Login({ setUser, setSelectedChar }) {
         }
 
         if (login) {
-            fetch(`http://localhost:3000/login`, {
+            fetch(`/login`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -44,8 +45,9 @@ function Login({ setUser, setSelectedChar }) {
                 }
             })
         } else {
-            fetch(`http://localhost:3000/users`, {
+            fetch(`/users`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },

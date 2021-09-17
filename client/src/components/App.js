@@ -15,14 +15,17 @@ function App() {
   const [selectedChar, setSelectedChar] = useState()
 
   useEffect(() => {
-    fetch('http://localhost:3000/me').then((response) => {
+    fetch('/me').then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          console.log(user)
+          console.log("/ME", user)
 
           if (user !== null) {
+            console.log("NOT NULL")
             setUser(user)
-            setSelectedChar(user.characters[0])
+            if (user.characters !== undefined) {
+              setSelectedChar(user.characters[0])
+            }
           }
         });
       }
