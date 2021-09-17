@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { Grid } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Button } from '@material-ui/core'
+import { Paper } from '@material-ui/core'
 import useStyles from './Styles'
+import JoshuaImg from '../assets/characters/joshua-idle.png'
 
 import CharacterCard from './CharacterCard'
 
@@ -44,12 +46,26 @@ function Character({ user, selectedChar, setSelectedChar }) {
             })
     }
 
+    const joshua = {
+        character_name: "Joshua",
+        image_url: "https://i.ibb.co/GpR92x0/joshua-idle.png"
+    }
+
     return (
         <>
             <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" className={classes.characterGrid} spacing={0}>
                 <Grid item className={classes.background} xs>
                     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} className={classes.characterContainer}>
                         {characterData}
+
+                        <Grid item xs={2} xl={2} style={{ textAlign: "center", opacity: '.5' }}>
+                            <Paper variant="outlined" elevation={2} className={classes.paper} >
+                                <img src={joshua.image_url} className={classes.imageCard} />
+                                <Typography variant="h5" color="textPrimary">
+                                    {joshua.character_name}
+                                </Typography>
+                            </Paper>
+                        </Grid>
                     </Grid>
                     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0}>
                         <Grid item xs style={{ textAlign: "center" }}>

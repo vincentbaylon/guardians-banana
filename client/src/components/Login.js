@@ -19,7 +19,9 @@ function Login({ setUser, setSelectedChar }) {
         setLogin(login => !login)
     }
 
-    const handleLogin = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
         const userCred = {
             username: userName,
             password: password
@@ -57,14 +59,11 @@ function Login({ setUser, setSelectedChar }) {
                 }
             })
         }
-
-
-
     }
 
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <Grid container spacing={4} justifyContent="center" alignItems="center" direction="column" className={classes.height}>
                     <Grid item>
                         <img src={Logo} className={classes.logo} />
@@ -82,7 +81,7 @@ function Login({ setUser, setSelectedChar }) {
                         <TextField onChange={(e) => setPassword(e.target.value)} id="password" label="Password" defaultValue="" />
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color={login ? "primary" : "secondary"} onClick={handleLogin}>
+                        <Button variant="contained" color={login ? "primary" : "secondary"} type="submit">
                             {login ? "Log In" : "Sign Up"}
                         </Button>
                     </Grid>
