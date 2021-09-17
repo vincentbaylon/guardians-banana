@@ -11,7 +11,7 @@ import skill3 from '../assets/30.png'
 import skill4 from '../assets/33.png'
 import skill5 from '../assets/47.png'
 
-function SkillCard({ battle, skill, setBattle, setSelectedChar, setEnemy, enemy, setStartBattle }) {
+function SkillCard({ battle, skill, setBattle, setSelectedChar, setEnemy, enemy, setStartBattle, setHeroImage, selectedChar, setEnemyImage }) {
   const [cooldown, setCooldown] = useState(0)
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -19,8 +19,6 @@ function SkillCard({ battle, skill, setBattle, setSelectedChar, setEnemy, enemy,
   const handleAction = async () => {
     setStartBattle(true)
     const random = Math.floor(Math.random() * enemy.skills.length)
-    console.log(random)
-    console.log(enemy.skills[random].skill_id)
 
     fetch(`http://localhost:3000/battles/${battle.id}`, {
       method: "PATCH",
@@ -37,8 +35,10 @@ function SkillCard({ battle, skill, setBattle, setSelectedChar, setEnemy, enemy,
       setSelectedChar(data.player_character)
       setEnemy(data.non_player_character)
     })
+    console.log(selectedChar)
+    setHeroImage(`${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-attack.png`)
 
-    await delay(3000)
+    await delay(2000)
 
     fetch(`http://localhost:3000/battles/${battle.id}`, {
       method: "PATCH",
@@ -54,6 +54,7 @@ function SkillCard({ battle, skill, setBattle, setSelectedChar, setEnemy, enemy,
       setSelectedChar(data.player_character)
       setEnemy(data.non_player_character)
     })
+    setEnemyImage(`${process.env.PUBLIC_URL}/animated/${enemy.character_name?.toString().toLowerCase()}-attack.png`)
   }
 
   return (

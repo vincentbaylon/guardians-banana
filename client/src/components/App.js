@@ -22,10 +22,11 @@ function App() {
         response.json().then((user) => {
           if (user !== null) {
             setUser(user)
-
-            if (user.characters !== undefined) {
-              setSelectedChar(user.characters[0])
-            }
+            console.log(user.characters)
+            // if (user.characters !== undefined) {
+            //   console.log("UNDEFINED")
+            //   setSelectedChar(user.characters[0])
+            // }
           }
           history.push('/account')
         });

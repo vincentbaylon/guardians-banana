@@ -4,7 +4,7 @@ class Battle < ApplicationRecord
   
   def attack(attacker, defender, skill_id)
     to_hit = rand(1..6)
-    damage_roll = rand(1..10)
+    damage_roll = rand(10..20)
     skill = Skill.find_by(id: skill_id[:skill_id])
     effect = skill.skill_effect
   

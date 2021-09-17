@@ -23,9 +23,9 @@ function End({ user }){
     useEffect(() => {
         fetch(`http://localhost:4000/high_scores/${user.id}`)
         .then( res => res.json())
-        .then(setCurrentScore)
+        .then(data => setCurrentScore((data.score = null) ? 0 : data.score))
         console.log(user)
-        setNewScore(currentScore.score + points)
+        setNewScore(currentScore + points)
         setPoints(25)
     }, [])
 
@@ -50,7 +50,7 @@ function End({ user }){
               
                 <Grid item>
                   <Typography variant="h3" align="center">
-                    {`${currentScore.score} + ${points} = ${newScore}`}
+                    {`${currentScore} + ${points} = ${newScore}`}
                   </Typography> 
                 </Grid >
               

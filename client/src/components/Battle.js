@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { React, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Grid } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
+import ReactPlayer from 'react-player'
 
 import useStyles from './Styles'
 import ProgressBar from './ProgressBar'
@@ -9,10 +11,36 @@ import End from './End'
 
 function Battle({ user, selectedChar, enemy, setSelectedChar, setEnemy }) {
   const classes = useStyles()
-
+  const history = useHistory()
   const [battle, setBattle] = useState()
   const [turn, setTurn] = useState()
   const [startBattle, setStartBattle] = useState(false)
+  const [heroImage, setHeroImage] = useState(`${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-idle.png`)
+  const [enemyImage, setEnemyImage] = useState(`${process.env.PUBLIC_URL}/animated/${enemy.character_name?.toString().toLowerCase()}-idle.png`)
+
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+  const enemyHP = enemy.current_hp
+  const charHP = selectedChar.current_hp
+
+  useEffect(() => {
+    if (charHP === 0) {
+      async function hpCheck() {
+        setHeroImage(`${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-die.png`)
+        await delay(5000)
+        history.push('/account')
+      }
+      hpCheck()
+    }
+
+    if (enemyHP === 0) {
+      async function enemyCheck() {
+        setEnemyImage(`${process.env.PUBLIC_URL}/animated/${enemy.character_name?.toString().toLowerCase()}-die.png`)
+        await delay(5000)
+        history.push('/account')
+      }
+      enemyCheck()
+    }
+  }, [charHP, enemyHP])
 
   useEffect(() => {
     fetch("http://localhost:3000/battles", {
@@ -31,27 +59,42 @@ function Battle({ user, selectedChar, enemy, setSelectedChar, setEnemy }) {
     fetch(`http://localhost:3000/battles/${battle.id}`, {
       method: 'DELETE',
     })
+
   }
 
-  const enemyHP = enemy.current_hp
-  const charHP = selectedChar.current_hp
-  if (enemyHP <= 0 || charHP <= 0) {
-    return (
-      <>
-        {endOfBattle()}
-        <End user={user} />
-      </>
-    )
-  }
+  // const deathImages = async () => {
+  //   if (enemyHP <= 0) {
+  //     setEnemyImage(`${process.env.PUBLIC_URL}/animated/${enemy.character_name?.toString().toLowerCase()}-die.png`)
+  //   } else if (charHP <= 0) {
+  //     setHeroImage(`${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-die.png`)
+  //   }
+
+  //   await delay(5000)
+  //   endOfBattle()
+  //   history.push('/account')
+  // }
+
+  // if (enemyHP <= 0 || charHP <= 0) {
+  //   return (
+  //     <>
+  //       {endOfBattle()}
+  //       {history.push('/account')}
+  //     </>
+  //   )
+  // }
   return (
     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0}>
+      <div style={{ height: '0px', top: 0 }}>
+        <ReactPlayer url={`${process.env.PUBLIC_URL}/battle-music.mp3`} playing='true' />
+      </div>
       <Grid item className={classes.backgroundTwo} xs>
-        <Grid container justifyContent="space-between" alignContent="flex-start" alignItems="flex-start" direction="row" spacing={0} >
+        <Grid container justifyContent="space-between" alignContent="center" alignItems="center" direction="row" spacing={0} >
 
-          <Grid item xs={3} style={{ textAlign: "center" }}>
+          <Grid item xs={4} style={{ textAlign: "center" }}>
             <ProgressBar percentage={selectedChar.current_hp} />
           </Grid>
-          <Grid item xs={3} style={{ textAlign: "center" }}>
+
+          <Grid item xs={4} style={{ textAlign: "right" }}>
             <ProgressBar percentage={enemy ? enemy.current_hp : ""} />
           </Grid>
           <Grid item xs={12} style={{ textAlign: "center" }}>
@@ -65,15 +108,15 @@ function Battle({ user, selectedChar, enemy, setSelectedChar, setEnemy }) {
           </Grid>
           <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0}>
             <Grid item xs={6} style={{ textAlign: "center" }}>
-              <img src={selectedChar.image_url} style={{ height: '350px' }} />
+              <img src={heroImage} style={{ height: '350px' }} />
             </Grid>
             <Grid item xs={6} style={{ textAlign: "center" }}>
-              <img src={enemy ? enemy.image_url : ""} style={{ height: '350px', transform: 'scaleX(-1)' }} />
+              <img src={enemy ? enemyImage : ""} style={{ height: '350px', transform: 'scaleX(-1)' }} />
             </Grid>
           </Grid>
 
           <Grid container direction="row" spacing={1} justifyContent="center" alignContent="center" alignItems="center" className={classes.skillsContainer} >
-            {selectedChar.skills.map(skill => <SkillCard battle={battle} skill={skill} setBattle={setBattle} setSelectedChar={setSelectedChar} setEnemy={setEnemy} enemy={enemy} setStartBattle={setStartBattle} />)}
+            {selectedChar.skills.map(skill => <SkillCard battle={battle} skill={skill} setBattle={setBattle} selectedChar={selectedChar} setSelectedChar={setSelectedChar} setEnemy={setEnemy} enemy={enemy} setStartBattle={setStartBattle} setHeroImage={setHeroImage} setEnemyImage={setEnemyImage} />)}
           </Grid>
         </Grid>
       </Grid>

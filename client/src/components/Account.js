@@ -18,7 +18,7 @@ function Account({ user, selectedChar, onLogout, setEnemy, setUser, }) {
     }, [])
     return (
         <>
-            {console.log(user), console.log(selectedChar)}
+            {console.log(user)}
             <Grid container justifyContent="center" alignContent="center" direction="column" alignItems="center" spacing={0} >
                 <Grid item xs={12} className={classes.background}>
                     <Grid container spacing={0} justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.halfHeight}>
@@ -26,7 +26,7 @@ function Account({ user, selectedChar, onLogout, setEnemy, setUser, }) {
                             <Card content style={{ backgroundColor: "white", marginTop: '20px' }}>
                                 <Grid item xs={12} style={{ textAlign: "center" }}>
                                     {selectedChar ?
-                                        <img src={selectedChar.image_url} className={classes.image} /> :
+                                        <img src={`${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-idle.png`} className={classes.image} /> :
                                         <Typography variant="h5">
                                             Select a character
                                         </Typography>

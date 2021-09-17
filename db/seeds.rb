@@ -45,22 +45,22 @@ high_score = HighScore.create!(user_id: vince_user.id, score: 100)
 
 skill = Skill.create!(skill_name: 'Gut Punch', flavor_text: "Punches you in the gut Before you can have a chance to block", skill_effect: 5)
 
-fighter_damage_skill = Skill.create!(skill_name: "Attack Skill", flavor_text: "", skill_effect: 10)
+fighter_damage_skill = Skill.create!(skill_name: "Attack Skill", flavor_text: "", skill_effect: 20)
 fighter_heal_skill = Skill.create!(skill_name: "Heal Skill", flavor_text: "", skill_effect: 5)
 fighter_acc_skill = Skill.create!(skill_name: "Acc Skill", flavor_text: "", skill_effect: 3)
 fighter_defense_skill = Skill.create!(skill_name: "Defense Skill", flavor_text: "", skill_effect: 5)
 
-assassin_damage_skill = Skill.create!(skill_name: "Attack Skill", flavor_text: "", skill_effect: 10)
+assassin_damage_skill = Skill.create!(skill_name: "Attack Skill", flavor_text: "", skill_effect: 20)
 assassin_heal_skill = Skill.create!(skill_name: "Heal Skill", flavor_text: "", skill_effect: 10)
 assassin_acc_skill = Skill.create!(skill_name: "Acc Skill", flavor_text: "", skill_effect: 6)
 assassin_defense_skill = Skill.create!(skill_name: "Defense Skill", flavor_text: "", skill_effect: 10)
 
-cleric_damage_skill = Skill.create!(skill_name: "Attack Skill", flavor_text: "", skill_effect: 10)
+cleric_damage_skill = Skill.create!(skill_name: "Attack Skill", flavor_text: "", skill_effect: 20)
 cleric_heal_skill = Skill.create!(skill_name: "Heal Skill", flavor_text: "", skill_effect: 10)
 cleric_acc_skill = Skill.create!(skill_name: "Acc Skill", flavor_text: "", skill_effect: 2)
 cleric_defense_skill = Skill.create!(skill_name: "Defense Skill", flavor_text: "", skill_effect: 10)
 
-wizard_damage_skill = Skill.create!(skill_name: "Attack Skill", flavor_text: "", skill_effect: 10)
+wizard_damage_skill = Skill.create!(skill_name: "Attack Skill", flavor_text: "", skill_effect: 20)
 wizard_heal_skill = Skill.create!(skill_name: "Heal Skill", flavor_text: "", skill_effect: 10)
 wizard_acc_skill = Skill.create!(skill_name: "Acc Skill", flavor_text: "", skill_effect: 5)
 wizard_defense_skill = Skill.create!(skill_name: "Defense Skill", flavor_text: "", skill_effect: 10)
