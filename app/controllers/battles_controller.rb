@@ -18,6 +18,13 @@ class BattlesController < ApplicationController
     render json: @battle, status: :accepted
   end
 
+  def destroy
+    @battle.destroy
+    @battle.player_character.update(current_hp: 100)
+    @battle.non_player_character.update(current_hp: 100)
+    head :no_content
+  end
+
   private
 
   def find_battle
