@@ -13,8 +13,8 @@ import End from './End'
 function App() {
   const history = useHistory()
   const [user, setUser] = useState()
-  const [selectedChar, setSelectedChar] = useState()
-
+  const [selectedChar, setSelectedChar] = useState({})
+  const [enemy, setEnemy] = useState()
   useEffect(() => {
     fetch('/me').then((response) => {
       if (response.ok) {
@@ -38,7 +38,6 @@ function App() {
   }
 
   const location = useLocation();
-  // console.log(location);
 
   return (
     <div>
@@ -48,7 +47,7 @@ function App() {
 
         <Switch>
           <Route path="/account">
-            <Account user={user} selectedChar={selectedChar} onLogout={onLogout} setUser={setUser} />
+            <Account user={user} selectedChar={selectedChar} onLogout={onLogout} setEnemy={setEnemy} enemy={enemy} />
           </Route>
           <Route path="/character">
             <Character user={user} setSelectedChar={setSelectedChar} selectedChar={selectedChar} />
@@ -60,7 +59,7 @@ function App() {
             <HighScore />
           </Route>
           <Route path="/battle">
-            <Battle user={user} selectedChar={selectedChar} />
+            <Battle user={user} selectedChar={selectedChar} setSelectedChar={setSelectedChar} enemy={enemy} setEnemy={setEnemy}/>
           </Route>
           <Route path="/end">
             <End user={user} />

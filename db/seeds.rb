@@ -65,7 +65,21 @@ wizard_heal_skill = Skill.create!(skill_name: "Heal Skill", flavor_text: "", ski
 wizard_acc_skill = Skill.create!(skill_name: "Acc Skill", flavor_text: "", skill_effect: 5)
 wizard_defense_skill = Skill.create!(skill_name: "Defense Skill", flavor_text: "", skill_effect: 10)
 
-klass_skill = KlassSkill.create!(klass_id: Klass.ids.first, skill_id: Skill.ids.first)
-
+KlassSkill.create!(klass_id: fighter.id, skill_id: fighter_damage_skill.id)
+KlassSkill.create!(klass_id: fighter.id, skill_id: fighter_heal_skill.id)
+KlassSkill.create!(klass_id: fighter.id, skill_id: fighter_acc_skill.id)
+KlassSkill.create!(klass_id: fighter.id, skill_id: fighter_defense_skill.id)
+KlassSkill.create!(klass_id: wizard.id, skill_id: wizard_damage_skill.id)
+KlassSkill.create!(klass_id: wizard.id, skill_id: wizard_heal_skill.id)
+KlassSkill.create!(klass_id: wizard.id, skill_id: wizard_acc_skill.id)
+KlassSkill.create!(klass_id: wizard.id, skill_id: wizard_defense_skill.id)
+KlassSkill.create!(klass_id: assassin.id, skill_id:assassin_damage_skill.id)
+KlassSkill.create!(klass_id: assassin.id, skill_id:assassin_heal_skill.id)
+KlassSkill.create!(klass_id: assassin.id, skill_id:assassin_acc_skill.id)
+KlassSkill.create!(klass_id: assassin.id, skill_id:assassin_defense_skill.id)
+KlassSkill.create!(klass_id: cleric.id, skill_id:cleric_damage_skill.id)
+KlassSkill.create!(klass_id: cleric.id, skill_id:cleric_heal_skill.id)
+KlassSkill.create!(klass_id: cleric.id, skill_id:cleric_acc_skill.id)
+KlassSkill.create!(klass_id: cleric.id, skill_id:cleric_defense_skill.id)
 
 puts 'Done seeding'

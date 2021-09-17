@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        minHeight: '100vh',
+        height: '100vh',
         minWidth: '100vw',
     },
     backgroundTwo: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'black' 
     },
     height: {
-        minHeight: '100vh'
+        minHeight: '75vh'
     },
     halfHeight: {
         minHeight: '100vh'
