@@ -7,7 +7,7 @@ class Battle < ApplicationRecord
     damage_roll = rand(1..10)
     skill = Skill.find_by(id: skill_id[:skill_id])
     effect = skill.skill_effect
-    # byebug
+  
 
     case skill.skill_name
     when 'Attack Skill'

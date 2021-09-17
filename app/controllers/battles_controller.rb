@@ -11,9 +11,9 @@ class BattlesController < ApplicationController
     #pass in battle_params as the args for the attack method
     # new battle_params will include skill_name and skill_effect
     if @battle.turn.even?
-      @battle.attack(@battle.player_character, @battle.non_player_character, skill_id: params[:skill_id])
+      @battle.attack(@battle.non_player_character, @battle.player_character, skill_id: params[:skill_id])
     else
-      @battle.attack(@battle.non_player_character, @battle.player_character, skill_id: params[:skill_id] )
+      @battle.attack(@battle.player_character, @battle.non_player_character, skill_id: params[:skill_id] )
     end
     render json: @battle, status: :accepted
   end

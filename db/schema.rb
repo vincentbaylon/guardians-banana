@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_213514) do
   create_table "battles", force: :cascade do |t|
     t.integer "player_character_id", null: false
     t.integer "non_player_character_id", null: false
-    t.integer "turn", default: 0
+    t.integer "turn", default: 1
     t.integer "damage"
     t.string "attack_type"
     t.datetime "created_at", precision: 6, null: false

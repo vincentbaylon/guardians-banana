@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'black' 
     },
     height: {
-        minHeight: '75vh'
+        minHeight: '100vh'
     },
     halfHeight: {
         minHeight: '100vh'
@@ -83,6 +83,19 @@ const useStyles = makeStyles((theme) => ({
     characterGrid: {
         marginTop: '6vh',
         minHeight: '50vh'
+    },
+    skillsContainer: {
+        position: "fixed",
+        bottom: theme.spacing.unit * 2,
+    },
+    battleAlert: {
+        margin: "auto", 
+        justifyContent: "center", 
+        textAlign: "center", 
+        alignItems:"center", 
+        alignContent: "center", 
+        width: "75%", 
+        backgroundColor: "black" 
     }
 }))
 
