@@ -15,13 +15,12 @@ Klass.destroy_all
 HighScore.destroy_all
 User.destroy_all
 
-
 fighter  = Klass.create!(klass_name: "Fighter", attack_bonus: 1, defense_bonus: 1)
 wizard   = Klass.create!(klass_name: "Wizard", attack_bonus: 1, defense_bonus: 1)
 assassin = Klass.create!(klass_name: "Assassin", attack_bonus: 1, defense_bonus: 1)
 cleric   = Klass.create!(klass_name: "Cleric", attack_bonus: 1, defense_bonus: 1)
 
-vince_user = User.create!(username: "Vince", password_digest: "password")
+vince_user = User.create!(username: "Vince", password: "password")
 
 # chacter = Character.create!(character_name: "Crash Test Hero", klass_id: lass.id.first, is_hero: true, max_hp: 10)
 lantz = Character.create!(character_name: "Lantz", klass_id: wizard.id, is_hero: true, image_url: "https://i.ibb.co/7WX0F7m/lantz-idle.png")

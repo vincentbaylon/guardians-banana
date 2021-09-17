@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    byebug
-    @user = User.find_by(id: session[:user_id])
+    @user = User.find(session[:user_id])
   end
 
   def user_params
