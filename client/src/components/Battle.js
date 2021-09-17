@@ -1,128 +1,126 @@
-import { useEffect, useState } from 'react'
+import { React, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Grid } from '@material-ui/core'
-import { Card } from '@material-ui/core'
-import { CardContent } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
+import ReactPlayer from 'react-player'
 
 import useStyles from './Styles'
 import ProgressBar from './ProgressBar'
+import SkillCard from './SkillCard'
+import End from './End'
 
-import skill1 from '../assets/2.png'
-import skill2 from '../assets/18.png'
-import skill3 from '../assets/30.png'
-import skill4 from '../assets/33.png'
-import skill5 from '../assets/47.png'
-
-
-function Battle({ user, selectedChar }) {
+function Battle({ user, selectedChar, enemy, setSelectedChar, setEnemy }) {
   const classes = useStyles()
-  const [characters, setCharacters] = useState([])
-  const [enemy, setEnemy] = useState()
+  const history = useHistory()
   const [battle, setBattle] = useState()
-  const [skillOne, setSkillOne] = useState({
-    skill_name: "",
-    skill_effect: "",
-    skill_cooldown: 0
-  })
-  const [skillTwo, setSkillTwo] = useState({
-    skill_name: "",
-    skill_effect: "",
-    skill_cooldown: 0
-  })
-  const [skillThree, setSkillThree] = useState({
-    skill_name: "",
-    skill_effect: "",
-    skill_cooldown: 0
-  })
-  const [skillFour, setSkillFour] = useState({
-    skill_name: "",
-    skill_effect: "",
-    skill_cooldown: 0
-  })
+  const [turn, setTurn] = useState()
+  const [startBattle, setStartBattle] = useState(false)
+  const [heroImage, setHeroImage] = useState(`${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-idle.png`)
+  const [enemyImage, setEnemyImage] = useState(`${process.env.PUBLIC_URL}/animated/${enemy.character_name?.toString().toLowerCase()}-idle.png`)
+
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+  const enemyHP = enemy.current_hp
+  const charHP = selectedChar.current_hp
 
   useEffect(() => {
-    let randomEnemy
-    fetch('http://localhost:3000/characters')
-      .then(res => res.json())
-      .then(data => {
-        randomEnemy = data[Math.floor(Math.random() * data.length)]
-        setEnemy(randomEnemy)
-        fetch("http://localhost:3000/battles", {
-          method: "POST",
-          headers: {
-            "Content-Type" : "application/json"
-          },
-          body: JSON.stringify({
-            "player_character_id" : selectedChar.id,
-            "non_player_character_id" : randomEnemy.id
-          })
-        }).then(r => r.json()).then(setBattle)
+    if (charHP === 0) {
+      async function hpCheck() {
+        setHeroImage(`${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-die.png`)
+        await delay(5000)
+        history.push('/account')
+      }
+      hpCheck()
+    }
+
+    if (enemyHP === 0) {
+      async function enemyCheck() {
+        setEnemyImage(`${process.env.PUBLIC_URL}/animated/${enemy.character_name?.toString().toLowerCase()}-die.png`)
+        await delay(5000)
+        history.push('/account')
+      }
+      enemyCheck()
+    }
+  }, [charHP, enemyHP])
+
+  useEffect(() => {
+    fetch("http://localhost:3000/battles", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "player_character_id": selectedChar.id,
+        "non_player_character_id": enemy.id
       })
+    }).then(r => r.json()).then(setBattle)
   }, [])
 
+  function endOfBattle() {
+    fetch(`http://localhost:3000/battles/${battle.id}`, {
+      method: 'DELETE',
+    })
+
+  }
+
+  // const deathImages = async () => {
+  //   if (enemyHP <= 0) {
+  //     setEnemyImage(`${process.env.PUBLIC_URL}/animated/${enemy.character_name?.toString().toLowerCase()}-die.png`)
+  //   } else if (charHP <= 0) {
+  //     setHeroImage(`${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-die.png`)
+  //   }
+
+  //   await delay(5000)
+  //   endOfBattle()
+  //   history.push('/account')
+  // }
+
+  // if (enemyHP <= 0 || charHP <= 0) {
+  //   return (
+  //     <>
+  //       {endOfBattle()}
+  //       {history.push('/account')}
+  //     </>
+  //   )
+  // }
   return (
-    <>
-      <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.height} spacing={0}>
-        <Grid item className={classes.backgroundTwo} xs={12}>
-          <Grid container justifyContent="space-around" alignContent="flex-start" alignItems="center" direction="row" className={classes.height} spacing={0}>
-            <Grid item xs={3} style={{ textAlign: "center" }}>
-              <ProgressBar percentage={selectedChar.current_hp} />
-            </Grid>
-            <Grid item xs={3} style={{ textAlign: "center" }}>
-              <ProgressBar percentage={enemy ? enemy.current_hp : ""} />
-            </Grid>
-            <Grid item xs={12} style={{ textAlign: "center" }}>
+    <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0}>
+      <div style={{ height: '0px', top: 0 }}>
+        <ReactPlayer url={`${process.env.PUBLIC_URL}/battle-music.mp3`} playing='true' />
+      </div>
+      <Grid item className={classes.backgroundTwo} xs>
+        <Grid container justifyContent="space-between" alignContent="center" alignItems="center" direction="row" spacing={0} >
 
-            </Grid>
-            <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} style={{ height: '85vh' }}>
-              <Grid item xs={6} style={{ textAlign: "center" }}>
-                <img src={selectedChar.image_url} style={{ height: '500px' }} />
-              </Grid>
-              <Grid item xs={6} style={{ textAlign: "center" }}>
-                <img src={enemy ? enemy.image_url : ""} style={{ height: '500px', transform: 'scaleX(-1)' }} />
-              </Grid>
-            </Grid>
+          <Grid item xs={4} style={{ textAlign: "center" }}>
+            <ProgressBar percentage={selectedChar.current_hp} />
+          </Grid>
 
-            <Grid container spacing={1} justifyContent="center" alignContent="center" alignItems="center">
-              <Grid item>
-                <Card variant="outlined">
-                  <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item>
-                <Card variant="outlined">
-                  <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item>
-                <Card variant="outlined">
-                  <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item>
-                <Card variant="outlined">
-                  <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item>
-                <Card variant="outlined">
-                  <CardContent>
-                    <img src={skill1} style={{ height: '100px' }} />
-                  </CardContent>
-                </Card>
-              </Grid>
+          <Grid item xs={4} style={{ textAlign: "right" }}>
+            <ProgressBar percentage={enemy ? enemy.current_hp : ""} />
+          </Grid>
+          <Grid item xs={12} style={{ textAlign: "center" }}>
+            {startBattle ?
+              <div className={classes.battleAlert}>
+                <Typography variant="h3" color="secondary">
+                  {(battle?.turn % 2 === 0) ? `${battle?.player_character.character_name} attacks: "${battle?.attack_type}!"` : `${battle?.non_player_character.character_name} attacks: "${battle?.attack_type}!"`}
+                </Typography>
+              </div>
+              : null}
+          </Grid>
+          <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0}>
+            <Grid item xs={6} style={{ textAlign: "center" }}>
+              <img src={heroImage} style={{ height: '350px' }} />
             </Grid>
+            <Grid item xs={6} style={{ textAlign: "center" }}>
+              <img src={enemy ? enemyImage : ""} style={{ height: '350px', transform: 'scaleX(-1)' }} />
+            </Grid>
+          </Grid>
+
+          <Grid container direction="row" spacing={1} justifyContent="center" alignContent="center" alignItems="center" className={classes.skillsContainer} >
+            {selectedChar.skills.map(skill => <SkillCard battle={battle} skill={skill} setBattle={setBattle} selectedChar={selectedChar} setSelectedChar={setSelectedChar} setEnemy={setEnemy} enemy={enemy} setStartBattle={setStartBattle} setHeroImage={setHeroImage} setEnemyImage={setEnemyImage} />)}
           </Grid>
         </Grid>
       </Grid>
-    </>
+    </Grid>
   )
 }
 

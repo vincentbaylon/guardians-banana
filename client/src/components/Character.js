@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { Grid } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Button } from '@material-ui/core'
+import { Paper } from '@material-ui/core'
 import useStyles from './Styles'
+import JoshuaImg from '../assets/characters/joshua-idle.png'
 
 import CharacterCard from './CharacterCard'
 
@@ -46,14 +48,23 @@ function Character({ user, selectedChar, setSelectedChar }) {
 
     return (
         <>
-            <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" className={classes.height} spacing={0}>
+            <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" className={classes.characterGrid} spacing={0}>
                 <Grid item className={classes.background} xs>
                     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="row" spacing={0} className={classes.characterContainer}>
                         {characterData}
+
+                        <Grid item xs={2} xl={2} style={{ textAlign: "center", opacity: '.5' }}>
+                            <Paper variant="outlined" elevation={2} className={classes.paper} >
+                                <img src={JoshuaImg} className={classes.imageCard} />
+                                <Typography variant="h5" color="textPrimary">
+                                    {"Joshua"}
+                                </Typography>
+                            </Paper>
+                        </Grid>
                     </Grid>
                     <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0}>
                         <Grid item xs style={{ textAlign: "center" }}>
-                            <img src={selectedChar ? selectedChar.image_url : undefined} className={classes.image} />
+                            <img src={selectedChar ? `${process.env.PUBLIC_URL}/animated/${selectedChar.character_name?.toString().toLowerCase()}-idle.png` : undefined} className={classes.image} />
                         </Grid>
                         <Grid item xs style={{ textAlign: "center" }}>
                             <Button variant="contained" color="secondary" size="large" onClick={handleClick}>{`Select ${selectedChar ? selectedChar.character_name : "A Character"}`}</Button>

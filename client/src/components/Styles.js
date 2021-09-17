@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        minHeight: '100vh',
+        height: '100vh',
         minWidth: '100vw',
     },
     backgroundTwo: {
@@ -41,32 +41,34 @@ const useStyles = makeStyles((theme) => ({
     image: {
         width: '100%',
         height: '400px',
-        maxHeight: '500px'
+        maxHeight: '500px',
+        objectFit: 'contain'
     },
     logo: {
+        marginTop: '5vh',
         width: '100%',
         maxHeight: '500px'
     },
     imageCard: {
         width: '100%',
-        height: '160px',
+        height: '130px',
         objectFit: 'cover',
     },
     paper: {
         display: 'inline-block',
-        width: '200px',
-        height: '200px',
+        width: '175px',
+        height: '175px',
+        margin: '5px',
+        backgroundColor: 'firebrick'
     },
     characterContainer: {
         // width: '1250px'
     },
     demo: {
-        // backgroundColor: theme.palette.background.paper,
-        
         width: '400px',
         backdropFilter: 'blur(4px)',
         textAlign: 'center',
-        color: 'gray',
+        color: '#FCC201',
         borderRadius: '10px',
     },
     title: {
@@ -78,6 +80,23 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'gray'
 
     },
+    characterGrid: {
+        marginTop: '6vh',
+        minHeight: '50vh'
+    },
+    skillsContainer: {
+        position: "fixed",
+        bottom: theme.spacing.unit * 2,
+    },
+    battleAlert: {
+        margin: "auto", 
+        justifyContent: "center", 
+        textAlign: "center", 
+        alignItems:"center", 
+        alignContent: "center", 
+        width: "75%", 
+        backgroundColor: "black" 
+    }
 }))
 
 export default useStyles

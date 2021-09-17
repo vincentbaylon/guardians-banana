@@ -37,7 +37,7 @@ function HighScore() {
     return (
       high.map((score) => (
         <Grid item>
-          <Typography variant="h3" align="center">
+          <Typography variant="h2" align="center">
             {score.score}
           </Typography> 
           <Typography variant="h5" align="right" paddingRight="40px">
@@ -53,8 +53,7 @@ function HighScore() {
   return (
     <>
       <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" className={classes.height} spacing={0}>
-        <Grid item className={classes.background} xs={12}>
-          <Button variant="contained" color="primary" onClick={handleBackClick}>Back</Button>
+        <Grid item className={classes.background} xs>
           <Grid container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={0} className={classes.characterContainer} xs={12}>
             <Grid container spacing={20} xs={12} direction="column" justifyContent="center" alignContent="center" alignItems="center">
               <Grid item xs={12} md={6} style={{ textAlign: "center" }}>

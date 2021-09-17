@@ -7,6 +7,9 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       t.boolean :is_hero, default: false
       t.integer :max_hp, default: 100
       t.integer :current_hp, default: 100
+      t.string :attack_url
+      t.string :die_url
+      t.string :idle_url
 
       t.timestamps
     end

@@ -13,41 +13,59 @@ function Login({ setUser, setSelectedChar }) {
     const [login, setLogin] = useState(true)
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    
+
 
     const handleClick = () => {
         setLogin(login => !login)
     }
 
-    const handleLogin = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
         const userCred = {
             username: userName,
             password: password
         }
-        let url = ''
-        login ? url = "login" : url = "users"
-        fetch(`http://localhost:3000/${url}`, {
-          method: 'POST',
-          headers: {
-              'Content-Type' : 'application/json'
-          },
-          body: JSON.stringify(userCred)
-        }).then(r => r.json()).then(data => {
-            if (data.errors === undefined){
-                setUser(data)
-                if (login) {
+
+        if (login) {
+            fetch(`/login`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userCred)
+            }).then(r => r.json()).then(data => {
+                if (data.error === undefined) {
+                    setUser(data)
                     setSelectedChar(data.characters[0])
+                    history.push('/account')
+                } else {
+                    alert(data.error)
                 }
-                history.push('/account')
-            }else{
-                alert(data.errors)
-            }
-        })
+            })
+        } else {
+            fetch(`/users`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userCred)
+            }).then(r => r.json()).then(data => {
+                if (data.error === undefined) {
+                    setUser(data)
+                    history.push('/account')
+                } else {
+                    alert(data.error)
+                }
+            })
+        }
     }
 
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <Grid container spacing={4} justifyContent="center" alignItems="center" direction="column" className={classes.height}>
                     <Grid item>
                         <img src={Logo} className={classes.logo} />
@@ -62,10 +80,10 @@ function Login({ setUser, setSelectedChar }) {
                         <TextField onChange={(e) => setUserName(e.target.value)} id="username" label="Username" defaultValue="" />
                     </Grid>
                     <Grid item>
-                        <TextField onChange={(e) => setPassword(e.target.value)} id="password" label="Password" defaultValue="" />
+                        <TextField onChange={(e) => setPassword(e.target.value)} id="password" type="password" label="Password" defaultValue="" />
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color={login ? "primary" : "secondary"} onClick={handleLogin}>
+                        <Button variant="contained" color={login ? "primary" : "secondary"} type="submit">
                             {login ? "Log In" : "Sign Up"}
                         </Button>
                     </Grid>
