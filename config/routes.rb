@@ -7,12 +7,7 @@ Rails.application.routes.draw do
   resources :high_scores, only: [ :index, :show]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-<<<<<<< HEAD
-  get '/high_scores', to: 'high_scores#index'
-  get '/high_scores/:id', to: 'high_scores#show'
-=======
   # get '/high_scores', to: 'high_scores#index'
->>>>>>> 75518a0196aa97b98f77d585d97adc90a53ec7aa
   delete '/user_characters/:user_id', to: 'user_characters#destroy'
   get '/me', to: 'users#show'
   # get '/high_scores/', to: 'high_scores#show'
