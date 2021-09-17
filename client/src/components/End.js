@@ -21,36 +21,37 @@ function End( user ){
     // const if currentScore.score = NaN return 0
     
     useEffect(() => {
-        fetch(`http://localhost:4000/high_scores/${user.id}`)
+        fetch(`http://localhost:4000/high_scores/1`)
         .then( res => res.json())
-        .then(setCurrentScore)
-        console.log(user)
-        setNewScore(currentScore.score + points)
+        .then( data => {setCurrentScore(data.score);console.log(currentScore)})
+        // console.log(data.score)
         setPoints(25)
-    }, [])
+        setNewScore(currentScore + points)
+        
+    }, [newScore])
 
 
-    function handleNextBattle(){
-        const scoreUpdate = {
-            score: newScore,
-            user_id: user.id
-        }
-            fetch(`http://localhost:4000/high_scores/${user.id}`,{
-            method: 'PATCH',
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify(scoreUpdate)
+    // function handleNextBattle(){
+    //     const scoreUpdate = {
+    //         score: newScore,
+    //         user_id: user.id
+    //     }
+    //         fetch(`http://localhost:4000/high_scores/${user.id}`,{
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type' : 'application/json'
+    //         },
+    //         body: JSON.stringify(scoreUpdate)
 
-        })
-    }
+    //     })
+    // }
 
     function displayScore() {
             return (
               
                 <Grid item>
                   <Typography variant="h3" align="center">
-                    {`${currentScore.score} + ${points} = ${newScore}`}
+                    {`${currentScore} + ${points} = ${newScore}`}
                   </Typography> 
                 </Grid >
               
@@ -80,7 +81,7 @@ function End( user ){
                                 primary={displayScore()}
                                 />
                                 {/* <Button component={NavLink} to='/battle'/> */}
-                                <Button component={NavLink} to='/battle' variant="contained" color="secondary" size="large" onClick={handleNextBattle()}>NEXT BATTLE</Button>
+                                {/* <Button component={NavLink} to='/battle' variant="contained" color="secondary" size="large" onClick={handleNextBattle()}>NEXT BATTLE</Button> */}
 
                             </ListItem>
                         </List>
