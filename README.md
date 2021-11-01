@@ -63,7 +63,7 @@
 
 ## Project Status
 
-Project is: _no longer being worked on_
+Project is: _complete_
 
 ## Contributors
 
