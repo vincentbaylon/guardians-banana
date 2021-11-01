@@ -19,7 +19,7 @@
 
 ## General Information
 
-- We created Guardians of the Banana as a fun project to create a fighting game with custom battle logic.
+- We created Guardians of the Banana as a fun project to create a fighting game and implement custom battle logic.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 ## Technologies Used
