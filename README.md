@@ -11,13 +11,10 @@
 - [General Info](#general-information)
 - [Technologies Used](#technologies-used)
 - [Features](#features)
-- [Screenshots](#screenshots)
+- [Demo](#demo)
 - [Setup](#setup)
-- [Usage](#usage)
 - [Project Status](#project-status)
-- [Room for Improvement](#room-for-improvement)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
+- [Contributors](#contributors)
 <!-- * [License](#license) -->
 
 ## General Information
